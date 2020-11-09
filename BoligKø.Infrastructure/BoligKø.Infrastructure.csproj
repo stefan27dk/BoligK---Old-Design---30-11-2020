@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BoligKø.ApplicationService\BoligKø.ApplicationService.csproj" />
+    <ProjectReference Include="..\BoligKø.Domain\BoligKø.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
