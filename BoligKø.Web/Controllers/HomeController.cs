@@ -23,7 +23,7 @@ namespace BoligKø.Web.Controllers
         {
             return View();
         }
-
+        [Authorize(Policy = "Admin")]
         public IActionResult Privacy()
         {
             return View();
