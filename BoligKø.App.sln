@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Web", "BoligKø.Web\BoligKø.Web.csproj", "{6C62FF8A-814B-4DFA-BE3E-1E9D8AA5ACD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Domain", "BoligKø.Domain\BoligKø.Domain.csproj", "{E92C0562-EFAE-465F-B500-0061A1364E33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.Domain", "BoligKø.Domain\BoligKø.Domain.csproj", "{E92C0562-EFAE-465F-B500-0061A1364E33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Infrastructure", "BoligKø.Infrastructure\BoligKø.Infrastructure.csproj", "{69C3526F-295E-4E56-AF27-B7B0FA35D128}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.Infrastructure", "BoligKø.Infrastructure\BoligKø.Infrastructure.csproj", "{69C3526F-295E-4E56-AF27-B7B0FA35D128}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.ApplicationService", "BoligKø.ApplicationService\BoligKø.ApplicationService.csproj", "{F3556501-22C0-4FB2-A659-47E56E4FAE05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.ApplicationService", "BoligKø.ApplicationService\BoligKø.ApplicationService.csproj", "{F3556501-22C0-4FB2-A659-47E56E4FAE05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{CF351621-42C3-485B-9B8C-292AB428BC30}"
 EndProject
@@ -17,11 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{900A38B5-F1F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{36D961F4-61AC-4E89-A58F-29872B3F99B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.Web.ApplicationService", "Boligkø.Web.ApplicationService\BoligKø.Web.ApplicationService.csproj", "{74A13081-A2EA-447C-BFFF-63B3C033902E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Web.ApplicationService", "Boligkø.Web.ApplicationService\BoligKø.Web.ApplicationService.csproj", "{74A13081-A2EA-447C-BFFF-63B3C033902E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.Web.Infrastructure", "BoligKø.Web.Infrastructure\BoligKø.Web.Infrastructure.csproj", "{ACAC3D2B-EFFD-4D99-861E-38FA3448B4A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Web.Infrastructure", "BoligKø.Web.Infrastructure\BoligKø.Web.Infrastructure.csproj", "{ACAC3D2B-EFFD-4D99-861E-38FA3448B4A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.Api", "BoligKø.Api\BoligKø.Api.csproj", "{EECCF9C2-57F5-4FF7-A9D7-96B8137861DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Api", "BoligKø.Api\BoligKø.Api.csproj", "{EECCF9C2-57F5-4FF7-A9D7-96B8137861DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.Web", "BoligKø.Web\BoligKø.Web.csproj", "{0607650A-626C-417F-A549-7D5F56ED95B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6C62FF8A-814B-4DFA-BE3E-1E9D8AA5ACD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C62FF8A-814B-4DFA-BE3E-1E9D8AA5ACD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C62FF8A-814B-4DFA-BE3E-1E9D8AA5ACD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C62FF8A-814B-4DFA-BE3E-1E9D8AA5ACD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E92C0562-EFAE-465F-B500-0061A1364E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E92C0562-EFAE-465F-B500-0061A1364E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E92C0562-EFAE-465F-B500-0061A1364E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,18 +53,22 @@ Global
 		{EECCF9C2-57F5-4FF7-A9D7-96B8137861DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EECCF9C2-57F5-4FF7-A9D7-96B8137861DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EECCF9C2-57F5-4FF7-A9D7-96B8137861DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0607650A-626C-417F-A549-7D5F56ED95B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0607650A-626C-417F-A549-7D5F56ED95B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0607650A-626C-417F-A549-7D5F56ED95B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0607650A-626C-417F-A549-7D5F56ED95B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6C62FF8A-814B-4DFA-BE3E-1E9D8AA5ACD9} = {900A38B5-F1FA-489D-9557-E47802E0636D}
 		{E92C0562-EFAE-465F-B500-0061A1364E33} = {CF351621-42C3-485B-9B8C-292AB428BC30}
 		{69C3526F-295E-4E56-AF27-B7B0FA35D128} = {CF351621-42C3-485B-9B8C-292AB428BC30}
 		{F3556501-22C0-4FB2-A659-47E56E4FAE05} = {CF351621-42C3-485B-9B8C-292AB428BC30}
 		{74A13081-A2EA-447C-BFFF-63B3C033902E} = {900A38B5-F1FA-489D-9557-E47802E0636D}
 		{ACAC3D2B-EFFD-4D99-861E-38FA3448B4A6} = {900A38B5-F1FA-489D-9557-E47802E0636D}
 		{EECCF9C2-57F5-4FF7-A9D7-96B8137861DD} = {CF351621-42C3-485B-9B8C-292AB428BC30}
+		{0607650A-626C-417F-A549-7D5F56ED95B7} = {900A38B5-F1FA-489D-9557-E47802E0636D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62AC7A32-39DA-4B52-A1A5-5DD8994514B3}
