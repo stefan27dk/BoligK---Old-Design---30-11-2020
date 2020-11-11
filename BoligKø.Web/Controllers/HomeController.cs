@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BoligKø.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BoligKø.Web.Controllers
 {

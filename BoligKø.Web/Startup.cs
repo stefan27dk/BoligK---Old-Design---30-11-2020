@@ -12,6 +12,7 @@ using BoligKø.Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace BoligKø.Web
 {
@@ -32,6 +33,8 @@ namespace BoligKø.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAuthorization(o => o.AddPolicy("Admin", e=>e.RequireClaim("AdminID")));
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
