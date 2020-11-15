@@ -1,0 +1,3 @@
+insert into AspNetRoles (Id, Name, NormalizedName) values ('1','Admin','Admin');
+insert into AspNetRoleClaims (RoleId, ClaimType,ClaimValue) values ('1', 'Admin', 'Admin');
+insert into AspNetUserClaims(UserId, ClaimType,ClaimValue) values ('911748ba-1908-43a1-bc1d-a56dfa8d385e','Auth','Admin')
