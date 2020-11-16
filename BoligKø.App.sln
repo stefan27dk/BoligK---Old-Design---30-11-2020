@@ -14,12 +14,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{900A38B5-F1FA-489D-9557-E47802E0636D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{36D961F4-61AC-4E89-A58F-29872B3F99B3}"
+	ProjectSection(SolutionItems) = preProject
+		SQL.txt = SQL.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Web.Infrastructure", "BoligKø.Web.Infrastructure\BoligKø.Web.Infrastructure.csproj", "{ACAC3D2B-EFFD-4D99-861E-38FA3448B4A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Api", "BoligKø.Api\BoligKø.Api.csproj", "{EECCF9C2-57F5-4FF7-A9D7-96B8137861DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoligKø.Web", "BoligKø.Web\BoligKø.Web.csproj", "{0607650A-626C-417F-A549-7D5F56ED95B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoligKø.Web", "BoligKø.Web\BoligKø.Web.csproj", "{0607650A-626C-417F-A549-7D5F56ED95B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
