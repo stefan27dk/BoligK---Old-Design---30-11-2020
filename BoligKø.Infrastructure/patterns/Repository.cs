@@ -1,8 +1,6 @@
 ﻿using BoligKø.Domain.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BoligKø.Infrastructure.patterns
@@ -21,7 +19,7 @@ namespace BoligKø.Infrastructure.patterns
         }
 
         /// <summary>
-        /// Returns the entity by id. 
+        /// Returns the entity matching the id. 
         /// If no matching entity found, returns null
         /// </summary>
         /// <param name="id"></param>
