@@ -12,11 +12,6 @@ namespace BoligKø.Domain.Model
         {
             SmåDyr = småDyr;
             StorDyr = storDyr;
-            ValidateState();
-        }
-        public void ValidateState()
-        {
-            throw new NotImplementedException();
         }
     }
 }

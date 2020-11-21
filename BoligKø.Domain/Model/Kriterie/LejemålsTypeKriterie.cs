@@ -10,12 +10,6 @@ namespace BoligKø.Domain.Model
         public LejemålsTypeKriterie(LejemålsType LejemålsType)
         {
             this.LejemålsType = LejemålsType;
-            ValidateState();
-        }
-
-        public void ValidateState()
-        {
-            throw new NotImplementedException();
         }
     }
 }

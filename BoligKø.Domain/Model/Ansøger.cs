@@ -11,6 +11,10 @@ namespace BoligKø.Domain.Model
         public string Efternavn { get; private set; }
         public string UserId { get; private set; }
         public IEnumerable<Ansøgning> Ansøgninger  { get; private set; }
+        public Ansøger()
+        {
+            Ansøgninger = new List<Ansøgning>();
+        }
 
         private void ValidateState()
         {

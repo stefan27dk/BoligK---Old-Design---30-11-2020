@@ -6,6 +6,5 @@ namespace BoligKø.Domain.Model
 {
     public interface IKriterie
     {
-        void ValidateState();
     }
 }
