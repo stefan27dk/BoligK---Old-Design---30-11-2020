@@ -1,0 +1,47 @@
+﻿
+
+
+
+ 
+    // Allow - Only Numbers
+    function numValidate(key) {
+                var keycode = (key.which) ? key.which : key.keyCode;
+
+                if (!(keycode == 8 || keycode == 46) && (keycode < 48 || keycode > 57)) // 8 = backspace & 46 = DEL  || 48-57 = numbers
+                {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+    }
+
+
+
+
+ 
+
+     // Check From / To - Compare Values
+    function validateFromTo(a, b) {
+
+        var aElem = document.getElementById(a); // From
+        var bElem = document.getElementById(b); // To
+    
+        var aValue = parseFloat(document.getElementById(a).value, 10); // From Value
+        var bValue = parseFloat(document.getElementById(b).value, 10); // To Value
+    
+    
+    
+        if (aValue > bValue)
+        {  
+            bElem.style.backgroundColor = "rgb(255, 190, 120)";
+            aElem.style.backgroundColor = "rgb(255, 190, 120)";
+        }
+        else if (aValue <= bValue)
+        {
+          bElem.style.backgroundColor = '';
+          aElem.style.backgroundColor = '';
+        }
+
+    }
+ 
