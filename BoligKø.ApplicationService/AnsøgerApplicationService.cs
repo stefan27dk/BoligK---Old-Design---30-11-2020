@@ -1,4 +1,5 @@
-﻿using BoligKø.Domain.Model;
+﻿using BoligKø.ApplicationService.Dto;
+using BoligKø.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,24 +9,24 @@ namespace BoligKø.ApplicationService
 {
     public class AnsøgerApplicationService : IAnsøgerApplicationService
     {
-        public async Task OpretAnsøgerAsync(Ansøger ansøger)
+        public async Task OpretAnsøgerAsync(AnsøgerDto ansøger)
         {
 
         }
-        public async Task EditAnsøgerAsync(Ansøger ansøger)
+        public async Task EditAnsøgerAsync(AnsøgerDto ansøger)
         {
 
         }
-        public async Task SletAnsøgerAsync(Ansøger ansøger)
+        public async Task SletAnsøgerAsync(AnsøgerDto ansøger)
         {
 
         }
-        public async Task<Ansøger> GetAnsøgerAsync(string id)
+        public async Task<AnsøgerDto> GetAnsøgerAsync(string id)
         {
             throw new NotImplementedException();
 
         }
-        public async Task<IEnumerable<Ansøger>> GetAllAnsøgereAsync()
+        public async Task<IEnumerable<AnsøgerDto>> GetAllAnsøgereAsync()
         {
             throw new NotImplementedException();
 

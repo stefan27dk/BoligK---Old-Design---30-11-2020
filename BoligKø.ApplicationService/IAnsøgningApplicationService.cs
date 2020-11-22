@@ -1,4 +1,4 @@
-﻿using BoligKø.Domain.Model;
+﻿using BoligKø.ApplicationService.Dto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,10 +6,10 @@ namespace BoligKø.ApplicationService
 {
     public interface IAnsøgningApplicationService
     {
-        Task EditAnsøgningAsync(Ansøgning ansøgning);
-        Task<IEnumerable<Ansøgning>> GetAllAnsøgningerAsync();
-        Task<Ansøgning> GetAnsøgningAsync(string id);
-        Task OpretAnsøgningAsync(Ansøgning ansøgning);
-        Task SletAnsøgningAsync(Ansøgning ansøgning);
+        Task EditAnsøgningAsync(AnsøgningDto ansøgning);
+        Task<IEnumerable<AnsøgningDto>> GetAllAnsøgningerAsync();
+        Task<AnsøgningDto> GetAnsøgningAsync(string id);
+        Task OpretAnsøgningAsync(AnsøgningDto ansøgning);
+        Task SletAnsøgningAsync(AnsøgningDto ansøgning);
     }
 }
