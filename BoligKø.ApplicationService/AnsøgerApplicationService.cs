@@ -15,7 +15,7 @@ namespace BoligKø.ApplicationService
         }
         public async Task OpretAsync(AnsøgerDto ansøger)
         {
-            var recordToInsert = new Ansøger(ansøger.Email, ansøger.Fornavn, ansøger.Efternavn, ansøger.UserId);
+            var recordToInsert = new Ansøger();
         }
         public async Task EditAsync(AnsøgerDto ansøger)
         {
