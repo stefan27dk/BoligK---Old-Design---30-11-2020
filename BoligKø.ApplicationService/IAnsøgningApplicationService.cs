@@ -7,9 +7,7 @@ namespace BoligKø.ApplicationService
     public interface IAnsøgningApplicationService
     {
         Task EditAnsøgningAsync(AnsøgningDto ansøgning);
-        Task<IEnumerable<AnsøgningDto>> GetAllAnsøgningerAsync();
-        Task<AnsøgningDto> GetAnsøgningAsync(string id);
         Task OpretAnsøgningAsync(AnsøgningDto ansøgning);
-        Task SletAnsøgningAsync(AnsøgningDto ansøgning);
+        Task SletAnsøgningAsync(string id);
     }
 }
