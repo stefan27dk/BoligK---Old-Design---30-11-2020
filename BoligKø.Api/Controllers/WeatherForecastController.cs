@@ -6,6 +6,7 @@ using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.Commands;
 using BoligKø.Infrastructure.context;
 using BoligKø.Infrastructure.patterns;
+using BoligKø.Infrastructure.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -25,13 +26,13 @@ namespace BoligKø.Api.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly AnsøgerCommand command;
-        private readonly AnsøgningCommand ansøgningCommand;
+        private readonly AnsøgerQuery query;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, AnsøgerCommand command, AnsøgningCommand ansøgningCommand)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, AnsøgerCommand command,AnsøgerQuery query)
         {
             _logger = logger;
             this.command = command;
-            this.ansøgningCommand = ansøgningCommand;
+            this.query = query;
         }
 
         [HttpGet]
@@ -51,20 +52,8 @@ namespace BoligKø.Api.Controllers
         [Route("/test")]
         public async Task<string> Test()
         {
-            var ansøger = await command.GetByIdIncludingAsync("1", t => t.Ansøgninger);
-            var ansøgningIds = new List<string>();
-            foreach (var ansøgning in ansøger.Ansøgninger)
-                ansøgningIds.Add(ansøgning.Id);
-
-            foreach(var id in ansøgningIds)
-            {
-                var ansøgning = await ansøgningCommand.GetByIdAsync(id);
-                await ansøgningCommand.DeleteAsync(ansøgning);
-            }
-
-            await command.DeleteAsync(ansøger);
-
-            return "doing";
+            var ansøgere = query.GetAll();
+            return JsonConvert.SerializeObject(ansøgere);
         }
 
     }

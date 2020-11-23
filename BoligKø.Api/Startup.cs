@@ -6,6 +6,7 @@ using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.Commands;
 using BoligKø.Infrastructure.context;
 using BoligKø.Infrastructure.patterns;
+using BoligKø.Infrastructure.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,7 +36,7 @@ namespace BoligKø.Api
             services.AddDbContext<BoligKøContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<AnsøgerCommand>();
-            services.AddScoped<AnsøgningCommand>();
+            services.AddScoped<AnsøgerQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

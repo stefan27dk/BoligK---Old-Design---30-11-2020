@@ -12,7 +12,5 @@ namespace BoligKø.Infrastructure.Commands
         public AnsøgerCommand(BoligKøContext context) : base(context)
         {
         }
-
-
     }
 }

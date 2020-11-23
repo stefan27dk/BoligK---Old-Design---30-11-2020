@@ -32,18 +32,6 @@ namespace BoligKø.Infrastructure.seeders
             context.SaveChanges();
         }
 
-        private static List<Ansøgning> GetTestAnsøgninger()
-        {
-            var ansøgninger = new List<Ansøgning>();
-
-            var ansøgning = new Ansøgning { Id = "1" };
-            ansøgning.SetAnsøger(new Ansøger { Id = "1" });
-            ansøgning.SetØvrigKommentar("Her er min øvrige kommentar");
-            ansøgninger.Add(ansøgning);
-
-            return ansøgninger;
-        }
-
         private static void ClearDatabaseFromTestData(BoligKøContext context)
         {
             var ansøgere = context.Set<Ansøger>();
@@ -60,22 +48,41 @@ namespace BoligKø.Infrastructure.seeders
         {
             var ansøgere = new List<Ansøger>();
 
-            var ansøger = new Ansøger {Id = "1"};
-            ansøger.SetFornavn("Karl");
-            ansøger.SetEfternavn("Mogensen");
-            ansøger.SetEmail("karlmogensen@hotmail.com");
-            ansøger.SetUserId("123");
-
-            var ansøgning = new Ansøgning { Id = "fisk" };
-            ansøgning.SetAnsøger(ansøger);
-            ansøgning.SetØvrigKommentar("Her er min øvrige kommentar");
+            var a1 = CreateAnsøger("1", "Karl", "Mogensen", "karl0844@edu.ucl.dk", "u1");
+            var ansøgning = CreateAnsøgning("a1", a1, "Ansøgningens øvrige kommentarer");
+            a1.AddAnsøgning(ansøgning);
+            ansøgere.Add(a1);
 
 
-            ansøger.AddAnsøgning(ansøgning);
+            var a2 = CreateAnsøger("2", "Martin", "Sørensen", "mart95s9@edu.ucl.dk", "u2");
+            ansøgere.Add(a2);
+            var a3 = CreateAnsøger("3", "Stefan", "Popov", "stef9633@edu.ucl.dk", "u3");
+            ansøgere.Add(a3);
+            var a4 = CreateAnsøger("4", "Nichlas", "Christensen", "nich1411@edu.ucl.dk", "u4");
+            ansøgere.Add(a4);
 
 
-            ansøgere.Add(ansøger);
+
+            ansøgere.Add(a1);
             return ansøgere;
+        }
+
+        private static Ansøger CreateAnsøger(string id, string fornavn, string efternavn, string email, string userId)
+        {
+            var a = new Ansøger { Id = id };
+            a.SetFornavn(fornavn);
+            a.SetEfternavn(efternavn);
+            a.SetEmail(email);
+            a.SetUserId(userId);
+            return a;
+        }
+
+        private static Ansøgning CreateAnsøgning(string id, Ansøger ansøger, string øvrigeKommentare)
+        {
+            var a = new Ansøgning { Id = id };
+            a.SetAnsøger(ansøger);
+            a.SetØvrigKommentar(øvrigeKommentare);
+            return a;
         }
 
     }
