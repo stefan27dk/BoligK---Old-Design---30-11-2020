@@ -10,5 +10,6 @@ namespace BoligKø.Infrastructure.Queries.interfaces
     {
         public IQueryable<Ansøger> GetAll();
         public Ansøger GetById(string id);
+        public Ansøger GetByuserId(string id);
     }
 }
