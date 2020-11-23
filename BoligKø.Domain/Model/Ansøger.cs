@@ -12,9 +12,32 @@ namespace BoligKø.Domain.Model
         public string Efternavn { get; private set; }
         public string UserId { get; private set; }
         public IEnumerable<Ansøgning> Ansøgninger { get; private set; }
-        public Ansøger()
+        public Ansøger(string mail = null, string forNavn = null, string efterNavn = null, string userId = null, ICollection<Ansøgning> ansøgninger = null)
         {
             Ansøgninger = new List<Ansøgning>();
+            if(mail != null || mail != string.Empty)
+            {
+                SetEmail(mail);
+            }
+            if(forNavn != null || forNavn != string.Empty)
+            {
+                SetFornavn(forNavn);
+            }
+            if(efterNavn != null || efterNavn != string.Empty)
+            {
+                SetEfternavn(efterNavn);
+            }
+            if(userId != null || userId != string.Empty)
+            {
+                SetUserId(userId);
+            }    
+            if(ansøgninger != null)
+            {
+                foreach(var ansøgning in ansøgninger)
+                {
+                    AddAnsøgning(ansøgning);
+                }
+            }
         }
 
         private void ValidateState()
@@ -25,6 +48,7 @@ namespace BoligKø.Domain.Model
         {
             Email = value;
             ValidateState();
+
         }
         public void SetFornavn(string value)
         {
