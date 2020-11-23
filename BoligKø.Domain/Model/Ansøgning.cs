@@ -9,11 +9,11 @@ namespace BoligKø.Domain.Model
     {
         public Ansøger Ansøger { get; private set; }
         public string ØvrigKommentar { get; private set; }
-        public IEnumerable<IKriterie> Kriterier { get; private set; }
+        public IEnumerable<Kriterie> Kriterier { get; private set; }
         public bool Aktiv { get; private set; }
         public Ansøgning()
         {
-            Kriterier = new List<IKriterie>();
+            Kriterier = new List<Kriterie>();
         }
         private void ValidateState()
         {
@@ -33,7 +33,7 @@ namespace BoligKø.Domain.Model
             ValidateState();
 
         }
-        public void Addkriterie(IKriterie kriterie)
+        public void Addkriterie(Kriterie kriterie)
         {
             var temp = Kriterier.ToList();
             temp.Add(kriterie);

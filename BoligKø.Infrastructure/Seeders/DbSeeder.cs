@@ -17,7 +17,7 @@ namespace BoligKø.Infrastructure.seeders
             if (context.Ansøgere.Any())
             {
                 //kommenter linjen under ind igen hvis du ikke vil have data bliver seeded ved hver kompilering        
-                return; 
+                //return; 
                 ClearDatabaseFromTestData(context);
             }
 
@@ -31,7 +31,7 @@ namespace BoligKø.Infrastructure.seeders
             {
                 var a = ansøgere[i];
                 var ansøgning = new Ansøgning { Id = i.ToString()};
-                ansøgning.Ansøger = a;
+                ansøgning.SetAnsøger(a);
                 ansøgninger.Add(ansøgning);
             }
             foreach(var ansøgning in ansøgninger)

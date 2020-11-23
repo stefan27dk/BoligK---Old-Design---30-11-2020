@@ -12,7 +12,7 @@ namespace BoligKø.Domain.Model
             //ValidateState();
         }
 
-        public void ValidateState()
+        public override void ValidateState()
         {
             if (Fra < 0)
                 throw new RangeException("Pris fra skal være højere end 0");

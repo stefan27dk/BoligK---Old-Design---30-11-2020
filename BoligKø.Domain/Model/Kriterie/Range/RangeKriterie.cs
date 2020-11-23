@@ -1,11 +1,6 @@
-﻿using BoligKø.Domain.Model.Kriterie;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BoligKø.Domain.Model
+﻿namespace BoligKø.Domain.Model
 {
-    public abstract class RangeKriterie : IValidateableKriterie
+    public abstract class RangeKriterie : Kriterie, IValidateableKriterie
     {
         public double Fra { get; set; }
         public double Til { get; set; }
@@ -13,7 +8,8 @@ namespace BoligKø.Domain.Model
         {
             this.Fra = fra;
             this.Til = til;
-            
         }
+
+        public abstract void ValidateState();
     }
 }

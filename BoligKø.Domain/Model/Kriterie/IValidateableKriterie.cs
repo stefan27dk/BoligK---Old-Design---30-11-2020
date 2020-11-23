@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BoligKø.Domain.Model.Kriterie
+namespace BoligKø.Domain.Model
 {
-    interface IValidateableKriterie:IKriterie
+    interface IValidateableKriterie   
     {
         void ValidateState();
     }
