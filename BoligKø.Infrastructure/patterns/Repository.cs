@@ -40,16 +40,21 @@ namespace BoligKø.Infrastructure.patterns
             return await dbSet.FirstOrDefaultAsync(t => t.Id == id);
         }
 
+        public async Task<T> GetByIdIncludingAsync(string id, [NotNullAttribute] Expression<Func<T, object>> navigationPropertyPath)
+        {
+            var dbSet = context.Set<T>().Include(navigationPropertyPath);
+            return await dbSet.FirstOrDefaultAsync(t => t.Id == id);
+        }
+
         public async Task CreateAsync(T entity)
         {
             context.Add(entity);
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
-            var dbSet = context.Set<T>();
-            var toUpdate = dbSet.Find(entity);
+            var toUpdate = await context.Set<T>().FirstOrDefaultAsync(t => t.Id == entity.Id);
             toUpdate = entity;
             await context.SaveChangesAsync();
         }

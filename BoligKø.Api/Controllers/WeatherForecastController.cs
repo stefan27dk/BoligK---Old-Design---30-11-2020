@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BoligKø.Domain.Model;
+using BoligKø.Infrastructure.Commands;
 using BoligKø.Infrastructure.context;
 using BoligKø.Infrastructure.patterns;
 using Microsoft.AspNetCore.Mvc;
@@ -19,18 +20,18 @@ namespace BoligKø.Api.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly Repository<Ansøger> repo;
-        private readonly BoligKøContext context;
+        private readonly AnsøgerCommand command;
+        private readonly AnsøgningCommand ansøgningCommand;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger,Repository<Ansøger> repo, BoligKøContext context)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, AnsøgerCommand command, AnsøgningCommand ansøgningCommand)
         {
             _logger = logger;
-            this.repo = repo;
-            this.context = context;
+            this.command = command;
+            this.ansøgningCommand = ansøgningCommand;
         }
 
         [HttpGet]
@@ -50,10 +51,20 @@ namespace BoligKø.Api.Controllers
         [Route("/test")]
         public async Task<string> Test()
         {
+            var ansøger = await command.GetByIdIncludingAsync("1", t => t.Ansøgninger);
+            var ansøgningIds = new List<string>();
+            foreach (var ansøgning in ansøger.Ansøgninger)
+                ansøgningIds.Add(ansøgning.Id);
 
-            var all = await repo.GetAllIncludingAsync(t => t.Ansøgninger );
+            foreach(var id in ansøgningIds)
+            {
+                var ansøgning = await ansøgningCommand.GetByIdAsync(id);
+                await ansøgningCommand.DeleteAsync(ansøgning);
+            }
 
-            return "fisk";
+            await command.DeleteAsync(ansøger);
+
+            return "doing";
         }
 
     }

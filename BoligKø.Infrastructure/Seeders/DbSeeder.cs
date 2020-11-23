@@ -24,22 +24,24 @@ namespace BoligKø.Infrastructure.seeders
             var ansøgere = GetTestAnsøgere();
             foreach (var a in ansøgere)
                 context.Ansøgere.Add(a);
-            context.SaveChanges();
 
-            var ansøgninger = new List<Ansøgning>();
-            for(int i = 0; i < ansøgere.Count; i++)
-            {
-                var a = ansøgere[i];
-                var ansøgning = new Ansøgning { Id = i.ToString()};
-                ansøgning.SetAnsøger(a);
-                ansøgninger.Add(ansøgning);
-            }
-            foreach(var ansøgning in ansøgninger)
-            {
-                context.Ansøgninger.Add(ansøgning);
-            }
+            //var ansøgninger = GetTestAnsøgninger();
+            //foreach (var a in ansøgninger)
+            //    context.Ansøgninger.Add(a);
+
             context.SaveChanges();
-            
+        }
+
+        private static List<Ansøgning> GetTestAnsøgninger()
+        {
+            var ansøgninger = new List<Ansøgning>();
+
+            var ansøgning = new Ansøgning { Id = "1" };
+            ansøgning.SetAnsøger(new Ansøger { Id = "1" });
+            ansøgning.SetØvrigKommentar("Her er min øvrige kommentar");
+            ansøgninger.Add(ansøgning);
+
+            return ansøgninger;
         }
 
         private static void ClearDatabaseFromTestData(BoligKøContext context)
@@ -48,7 +50,7 @@ namespace BoligKø.Infrastructure.seeders
             foreach (var a in ansøgere)
                 context.Remove(a);
 
-             var ansøgninger = context.Set<Ansøgning>();
+            var ansøgninger = context.Set<Ansøgning>();
             foreach (var a in ansøgninger)
                 context.Remove(a);
             context.SaveChanges();
@@ -57,16 +59,24 @@ namespace BoligKø.Infrastructure.seeders
         private static List<Ansøger> GetTestAnsøgere()
         {
             var ansøgere = new List<Ansøger>();
-            for(int i = 0; i < 100; i++)
-            {
-                var a = new Ansøger { Id = i.ToString() };
-                a.SetFornavn("fornavn" + i);
-                a.SetEfternavn("efternavn" + i);
-                ansøgere.Add(a);
-            }
 
+            var ansøger = new Ansøger {Id = "1"};
+            ansøger.SetFornavn("Karl");
+            ansøger.SetEfternavn("Mogensen");
+            ansøger.SetEmail("karlmogensen@hotmail.com");
+            ansøger.SetUserId("123");
+
+            var ansøgning = new Ansøgning { Id = "fisk" };
+            ansøgning.SetAnsøger(ansøger);
+            ansøgning.SetØvrigKommentar("Her er min øvrige kommentar");
+
+
+            ansøger.AddAnsøgning(ansøgning);
+
+
+            ansøgere.Add(ansøger);
             return ansøgere;
         }
-        
+
     }
 }

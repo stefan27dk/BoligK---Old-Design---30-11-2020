@@ -16,8 +16,4 @@
     <ProjectReference Include="..\BoligKø.Domain\BoligKø.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="extensions\" />
-  </ItemGroup>
-
 </Project>

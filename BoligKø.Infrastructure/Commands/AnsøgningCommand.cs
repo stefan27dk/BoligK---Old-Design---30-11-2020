@@ -2,14 +2,12 @@
 using BoligKø.Infrastructure.Commands.Interfaces;
 using BoligKø.Infrastructure.context;
 using BoligKø.Infrastructure.patterns;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BoligKø.Infrastructure.Commands
 {
-    public class AnsøgerCommand : Repository<Ansøger>, IAnsøgerCommand
+    public class AnsøgningCommand : Repository<Ansøgning>, IAnsøgningCommand
     {
-        public AnsøgerCommand(BoligKøContext context) : base(context)
+        public AnsøgningCommand(BoligKøContext context) : base(context)
         {
         }
     }
