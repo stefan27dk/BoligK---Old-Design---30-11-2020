@@ -9,23 +9,23 @@ namespace BoligKø.ApplicationService
 {
     public class AnsøgningApplicationService : IAnsøgningApplicationService
     {
-        public async Task OpretAnsøgningAsync(AnsøgningDto ansøgning)
+        public async Task OpretAsync(AnsøgningDto ansøgning)
         {
 
         }
-        public async Task EditAnsøgningAsync(AnsøgningDto ansøgning)
+        public async Task EditAsync(AnsøgningDto ansøgning)
         {
 
         }
-        public async Task SletAnsøgningAsync(AnsøgningDto ansøgning)
+        public async Task SletAsync(AnsøgningDto ansøgning)
         {
 
         }
-        public async Task<AnsøgningDto> GetAnsøgningAsync(string id)
+        public async Task<AnsøgningDto> GetAsync(string id)
         {
             throw new NotImplementedException();
         }
-        public async Task<IEnumerable<AnsøgningDto>> GetAllAnsøgningerAsync()
+        public async Task<IEnumerable<AnsøgningDto>> GetAllAsync()
         {
             throw new NotImplementedException();
         }

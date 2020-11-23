@@ -6,8 +6,8 @@ namespace BoligKø.ApplicationService
 {
     public interface IAnsøgningApplicationService
     {
-        Task EditAnsøgningAsync(AnsøgningDto ansøgning);
-        Task OpretAnsøgningAsync(AnsøgningDto ansøgning);
-        Task SletAnsøgningAsync(AnsøgningDto ansøgning);
+        Task EditAsync(AnsøgningDto ansøgning);
+        Task OpretAsync(AnsøgningDto ansøgning);
+        Task SletAsync(AnsøgningDto ansøgning);
     }
 }
