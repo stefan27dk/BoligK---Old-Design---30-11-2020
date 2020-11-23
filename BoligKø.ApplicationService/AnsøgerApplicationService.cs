@@ -1,4 +1,5 @@
-﻿using BoligKø.ApplicationService.Dto;
+﻿using AutoMapper;
+using BoligKø.ApplicationService.Dto;
 using BoligKø.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,21 @@ namespace BoligKø.ApplicationService
 {
     public class AnsøgerApplicationService : IAnsøgerApplicationService
     {
-        public AnsøgerApplicationService()
-        {
+        private readonly IMapper _mapper;
 
+        public AnsøgerApplicationService(IMapper mapper)
+        {
+            this._mapper = mapper;
         }
         public async Task OpretAsync(AnsøgerDto ansøger)
         {
             var recordToInsert = new Ansøger();
+            foreach(var a in ansøger.Ansøgninger)
+            {
+
+                recordToInsert.AddAnsøgning(_mapper.Map<Ansøgning>(a));
+
+            }
         }
         public async Task EditAsync(AnsøgerDto ansøger)
         {
