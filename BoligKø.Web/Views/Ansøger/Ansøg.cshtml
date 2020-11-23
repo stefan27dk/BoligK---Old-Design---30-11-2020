@@ -1,0 +1,177 @@
+﻿
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager;
+
+@using BoligKø.Web.ViewModels;
+@model AnsøgningViewModel
+
+@{
+    ViewBag.Title = "Ansøg";
+}
+
+<h4>Ansøg</h4>
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+
+            @if (signInManager.IsSignedIn(User))
+            {       
+                <input type="hidden" asp-for="UserId" value="@signInManager.UserManager.GetUserId(User)"/>
+            }
+
+
+            <div class="form-group">
+                <label asp-for="PostNr"></label>
+                <input type="text" maxlength="4" onkeypress="return numValidate(event)" asp-for="PostNr" class="form-control" />
+                <span asp-validation-for="PostNr" class="text-danger"></span>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="StorDyr"></label>
+                <input asp-for="StorDyr" class="form-control" />
+                <span asp-validation-for="StorDyr" class="text-danger"></span>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="SmåDyr"></label>
+                <input asp-for="SmåDyr" class="form-control" />
+                <span asp-validation-for="SmåDyr" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label asp-for="FraAntalVærelser"></label>
+                <input id="FraVærelser" type="text" maxlength="2" oninput="validateFromTo('FraVærelser', 'TilVærelser')" onkeypress="return numValidate(event)" asp-for="FraAntalVærelser" class="form-control" />
+                <span asp-validation-for="FraAntalVærelser" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label asp-for="TilAntalVærelser"></label>
+                <input id="TilVærelser" type="text" maxlength="2" oninput="validateFromTo('FraVærelser', 'TilVærelser')" onkeypress="return numValidate(event)" asp-for="TilAntalVærelser" class="form-control" />
+                <span asp-validation-for="TilAntalVærelser" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label asp-for="FraPris"></label>
+                <input id="FraPris" type="text" maxlength="5" oninput="validateFromTo('FraPris', 'TilPris')" onkeypress="return numValidate(event)" asp-for="FraPris" class="form-control" />
+                <span asp-validation-for="FraPris" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label asp-for="TilPris"></label>
+                <input id="TilPris" type="text" maxlength="5" oninput="validateFromTo('FraPris', 'TilPris')" onkeypress="return numValidate(event)" asp-for="TilPris" class="form-control" />
+                <span asp-validation-for="TilPris" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="FraKvm"></label>
+                <input id="FraKvm" type="text" maxlength="5" oninput="validateFromTo('FraKvm', 'ToKvm')" onkeypress="return numValidate(event)" asp-for="FraKvm" class="form-control" />
+                <span asp-validation-for="FraKvm" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="TilKvm"></label>
+                <input id="ToKvm" type="text" maxlength="5" oninput="validateFromTo('FraKvm', 'ToKvm')" onkeypress="return numValidate(event)" asp-for="TilKvm" class="form-control" />
+                <span asp-validation-for="TilKvm" class="text-danger"></span>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="LejemålsType"></label>
+                <div class="col-sm-10">
+                    <select asp-for="LejemålsType" class="custom-select mr-sm-2"
+                            asp-items="Html.GetEnumSelectList<LejemålTypeKriterie>()">
+                        <option value=""> Valg Type</option>
+                    </select>
+                    <span asp-validation-for="LejemålsType" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="ØvrigeKommentar"></label>
+                <input type="text" maxlength="500" asp-for="ØvrigeKommentar" class="form-control" />
+                <span asp-validation-for="ØvrigeKommentar" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <button type="submit" class="btn btn-primary">Opret</button>
+
+        </form>
+
+
+
+
+
+
+
+        <!----Input--Background--Color--On--Error------->
+        <style>
+            input.input-validation-error,
+            textarea.input-validation-error,
+            select.input-validation-error {
+                background: rgb(250, 145, 145);
+                border: 1px solid #CD0A0A;
+            }
+        </style>
+
+
+
+
+        <!--------Custom--Validator-------------->
+        <script src="~/js/CustomClientSideValidator.js"></script>
+
+
+
+
+
+        
+         
+     
+        
+
+
+
+
+
+    </div>
+</div>
