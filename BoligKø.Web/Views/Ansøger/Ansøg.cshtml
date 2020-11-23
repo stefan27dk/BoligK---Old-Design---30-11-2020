@@ -9,18 +9,22 @@
     ViewBag.Title = "Ansøg";
 }
 
-<h4>Ansøg</h4>
 
 
 
 
-<div class="row">
+
+<div class="row" style="margin:5%;">
+    <h4>Ansøg</h4>
+    <br />
+    <br />
+    <br />
     <div class="col-md-12">
         <form method="post">
 
             @if (signInManager.IsSignedIn(User))
-            {       
-                <input type="hidden" asp-for="UserId" value="@signInManager.UserManager.GetUserId(User)"/>
+            {
+                <input type="hidden" asp-for="UserId" value="@signInManager.UserManager.GetUserId(User)" />
             }
 
 
@@ -164,10 +168,10 @@
 
 
 
-        
-         
-     
-        
+
+
+
+
 
 
 
