@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace BoligKø.Infrastructure.context
@@ -11,11 +13,23 @@ namespace BoligKø.Infrastructure.context
         public DbSet<Ansøger> Ansøgere { get; set; }
         public DbSet<Ansøgning> Ansøgninger { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=BoligKø;Integrated Security=True");
+        public BoligKøContext(DbContextOptions<BoligKøContext> options) : base(options) { 
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            addKriterieEntities(builder);
+        }
+
+        private void addKriterieEntities(ModelBuilder builder)
+        {
+            builder.Entity<KvmKriterie>();
+            builder.Entity<LejemålsTypeKriterie>();
+            builder.Entity<LokationKriterie>();
+            builder.Entity<PrisKriterie>();
+            builder.Entity<TilladtDyrKriterie>();
+            builder.Entity<VærelsesKriterie>();
+        }
     }
-}
+
+    }

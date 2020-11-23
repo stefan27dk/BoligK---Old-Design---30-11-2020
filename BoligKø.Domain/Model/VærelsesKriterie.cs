@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    class VærelsesKriterie : RangeKriterie
+    public class VærelsesKriterie : RangeKriterie
     {
         public VærelsesKriterie(double fra, double til) : base(fra, til)
         {

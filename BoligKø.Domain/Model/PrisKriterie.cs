@@ -8,10 +8,10 @@ namespace BoligKø.Domain.Model
     {
         public PrisKriterie(double fra, double til) : base(fra, til)
         {
-            ValidateState();
+            //ValidateState();
         }
 
-        public override void ValidateState()
+        public void ValidateState()
         {
             throw new NotImplementedException();
         }

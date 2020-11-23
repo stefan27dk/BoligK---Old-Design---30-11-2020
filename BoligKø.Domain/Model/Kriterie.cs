@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public interface IKriterie
+    public abstract class Kriterie : BaseEntity
     {
-        void ValidateState();
+        public abstract void ValidateState();
     }
 }

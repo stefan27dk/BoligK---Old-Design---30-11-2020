@@ -1,21 +1,31 @@
 ﻿using BoligKø.Domain.Model;
+using BoligKø.Infrastructure.context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace BoligKø.Infrastructure.patterns
 {
     public class Repository<T> where T : BaseEntity
     {
-        private readonly DbContext context;
-        public Repository(DbContext context)
+        private readonly BoligKøContext context;
+        public Repository(BoligKøContext context)
         {
             this.context = context;
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<ICollection<T>> GetAllAsync()
         {
-            return context.Set<T>();
+            return await context.Set<T>().ToListAsync();
+        }
+
+        public async Task<ICollection<T>> GetAllIncludingAsync([NotNullAttribute] Expression<Func<T, object>> navigationPropertyPath)
+        {
+             return await context.Set<T>().Include(navigationPropertyPath).ToListAsync();
         }
 
         /// <summary>
@@ -32,8 +42,7 @@ namespace BoligKø.Infrastructure.patterns
 
         public async Task CreateAsync(T entity)
         {
-            var dbSet = context.Set<T>();
-            dbSet.Add(entity);
+            context.Add(entity);
             await context.SaveChangesAsync();
         }
 
@@ -47,8 +56,7 @@ namespace BoligKø.Infrastructure.patterns
 
         public async Task DeleteAsync(T entity)
         {
-            var dbSet = context.Set<T>();
-            dbSet.Remove(entity);
+            context.Remove(entity);
             await context.SaveChangesAsync();
         }
     }

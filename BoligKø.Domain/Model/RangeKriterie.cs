@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public abstract class RangeKriterie : IKriterie
+    public abstract class RangeKriterie : Kriterie
     {
         public double Fra { get; set; }
         public double Til { get; set; }
@@ -14,6 +14,10 @@ namespace BoligKø.Domain.Model
             this.Til = til;
             
         }
-        public abstract void ValidateState();
+
+        public override void ValidateState()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

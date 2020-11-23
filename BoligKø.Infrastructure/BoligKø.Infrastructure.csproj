@@ -5,13 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="microsoft.entityframeworkcore.inmemory" Version="5.0.0" />
     <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BoligKø.ApplicationService\BoligKø.ApplicationService.csproj" />
     <ProjectReference Include="..\BoligKø.Domain\BoligKø.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="extensions\" />
   </ItemGroup>
 
 </Project>

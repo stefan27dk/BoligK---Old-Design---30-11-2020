@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BoligKø.Domain.Model;
+using BoligKø.Infrastructure.context;
+using BoligKø.Infrastructure.patterns;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace BoligKø.Api.Controllers
 {
@@ -17,10 +23,14 @@ namespace BoligKø.Api.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly Repository<Ansøger> repo;
+        private readonly BoligKøContext context;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,Repository<Ansøger> repo, BoligKøContext context)
         {
             _logger = logger;
+            this.repo = repo;
+            this.context = context;
         }
 
         [HttpGet]
@@ -35,5 +45,16 @@ namespace BoligKø.Api.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet]
+        [Route("/test")]
+        public async Task<string> Test()
+        {
+
+            var all = await repo.GetAllIncludingAsync(t => t.Ansøgninger );
+
+            return "fisk";
+        }
+
     }
 }

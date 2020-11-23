@@ -4,15 +4,15 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public class LokationKriterie:IKriterie
+    public class LokationKriterie:Kriterie
     {
-        public int PostNummer { get;  }
+        public int PostNummer { get; set; }
         public LokationKriterie(int postNummer)
         {
             this.PostNummer = postNummer;
-            ValidateState();
+            //ValidateState();
         }
-        public void ValidateState()
+        public override void ValidateState()
         {
             throw new NotImplementedException();
         }
