@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.ApplicationService.Dto
 {
-    public class AnsøgerDto
+    public class AnsøgerDto:BaseEntity
     {
         public string Email { get; set; }
         public string Fornavn { get;  set; }

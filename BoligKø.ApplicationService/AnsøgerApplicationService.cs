@@ -9,9 +9,13 @@ namespace BoligKø.ApplicationService
 {
     public class AnsøgerApplicationService : IAnsøgerApplicationService
     {
-        public async Task OpretAsync(AnsøgerDto ansøger)
+        public AnsøgerApplicationService()
         {
 
+        }
+        public async Task OpretAsync(AnsøgerDto ansøger)
+        {
+            var recordToInsert = new Ansøger();
         }
         public async Task EditAsync(AnsøgerDto ansøger)
         {
