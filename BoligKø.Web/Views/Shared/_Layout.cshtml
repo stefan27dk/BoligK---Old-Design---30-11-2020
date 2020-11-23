@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
     <link rel="stylesheet" href="/assets/css/News-Cards.css">
-
+    <link href="~/css/BoligKøCustomStyle.css" rel="stylesheet" />
     
+
+
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
@@ -31,10 +33,10 @@
             <a class="navbar-brand logo" href="#">Lejebolig Ansøgnings Portal</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" asp-controller="Home" asp-action="Privacy"><i class="far fa-building"></i>Portfølje</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link"  asp-action="Ansøg" asp-controller="Ansøger"><i class="fas fa-file-signature"></i>Ansøg</a></li>
-                    <partial name="_LoginPartial" />   
+                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-controller="Home" asp-action="Index"><i class="fas fa-home colorGold"></i>Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" asp-controller="Home" asp-action="Privacy"><i class="far fa-building colorGold"></i>Portfølje</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link"  asp-action="Ansøg" asp-controller="Ansøger"><i class="fas fa-file-signature colorGold"></i>Ansøg</a></li>
+                    <partial style="color: red;" name="_LoginPartial" />   
                 </ul>
             </div>
         </div>
