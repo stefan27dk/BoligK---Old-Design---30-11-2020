@@ -10,6 +10,6 @@ namespace BoligKø.ApplicationService.Dto
         public string Fornavn { get;  set; }
         public string Efternavn { get;  set; }
         public string UserId { get;  set; }
-        public IEnumerable<AnsøgningDto> Ansøgninger { get; set; }
+        public ICollection<AnsøgningDto> Ansøgninger { get; set; }
     }
 }

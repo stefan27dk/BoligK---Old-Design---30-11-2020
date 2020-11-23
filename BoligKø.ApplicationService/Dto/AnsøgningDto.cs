@@ -8,7 +8,7 @@ namespace BoligKø.ApplicationService.Dto
     {
         public AnsøgerDto Ansøger { get;  set; }
         public string ØvrigKommentar { get;  set; }
-        public IEnumerable<IKriterieDto> Kriterier { get;  set; }
+        public ICollection<IKriterieDto> Kriterier { get;  set; }
         public bool Aktiv { get;  set; }
     }
 }
