@@ -106,8 +106,17 @@
 }
 
 
+
+
 .textArea:focus {
     background-color: rgb(255, 228, 153);
+}
+
+
+
+
+textArea:hover{
+                 background-color:aquamarine;
 }
 
 
@@ -117,9 +126,7 @@
 
 
 
-
 /* ----Inputs-----*/
-
 .inputDark {
     font-weight: 900;
     background-color: rgb(190, 254, 226);
