@@ -89,8 +89,10 @@
 
 /* ----Inputs-----*/
 
-.inputDark{
-    font-weight:bold;
+.inputDark {
+    font-weight: 900;
+    background-color: rgb(190, 254, 226);
+    color: rgb(17, 74, 10);
 }
 
     .inputDark:hover {
