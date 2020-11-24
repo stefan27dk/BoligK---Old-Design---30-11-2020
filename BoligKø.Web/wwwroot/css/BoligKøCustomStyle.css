@@ -71,7 +71,7 @@
 .title {
     margin: auto;
     font-weight: 900;
-    color: rgb(255, 165, 30);
+    color: rgb(255, 193, 100);
     font-size: 34px;   
 }
 
@@ -116,7 +116,7 @@
 
 
 textArea:hover{
-                 background-color:aquamarine;
+  background-color:aquamarine;
 }
 
 
@@ -240,4 +240,36 @@ textArea:hover{
 
 
 
- 
+
+        /*Button*/
+.buttonStyle1 {
+    border-radius: 4px;
+    /*border: 2px solid rgb(107,107,107);*/
+    border: none;
+    outline: none;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgb(0, 162, 255) 50%, rgb(0, 162, 255) 80%);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Andale Mono, monospace;
+    font-size: 20px;
+}
+
+    .buttonStyle1:hover {
+       
+        background: linear-gradient(to bottom, rgb(80,86,105) 50%, #6a809c36 80%);
+        color: rgb(155,255,131);
+    }
+
+
+    .buttonStyle1:active {
+        background-color: deepskyblue;
+        color: white;
+    }
+
+
+    .buttonStyle1:focus {
+        border: none;
+        outline: none;
+    }
