@@ -4,11 +4,11 @@ using System.Text;
 
 namespace BoligKø.ApplicationService.Dto
 {
-    public class AnsøgningDto
+    public class AnsøgningDto:BaseEntity
     {
-        public AnsøgerDto Ansøger { get; private set; }
-        public string ØvrigKommentar { get; private set; }
-        public IEnumerable<IKriterieDto> Kriterier { get; private set; }
-        public bool Aktiv { get; private set; }
+        public AnsøgerDto Ansøger { get;  set; }
+        public string ØvrigKommentar { get;  set; }
+        public ICollection<IKriterieDto> Kriterier { get;  set; }
+        public bool Aktiv { get;  set; }
     }
 }

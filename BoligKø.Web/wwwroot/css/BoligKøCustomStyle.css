@@ -1,0 +1,109 @@
+﻿
+
+.darkBody {
+    width:100%;
+    height:100%;
+    background-color: rgb(40, 37, 44);
+    color: sandybrown;
+}
+
+ 
+
+ /*On error change bacgkround color of inputs*/
+    input.input-validation-error,
+    textarea.input-validation-error,
+    select.input-validation-error {
+    background: rgb(250, 145, 145);
+    border: 1px solid #CD0A0A;
+}
+
+
+
+.colorGold {
+    color: #ffe668;
+}
+
+
+
+
+/*Input Container*/
+.inputContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    margin-top: 2%;
+    padding:20px;
+    min-width: 250px;
+    max-width: 450px;
+    width: 30%;
+    background: linear-gradient(to bottom, rgba(62, 52, 82, 0.397) 50%, #2c1d2e77 80%);
+    color: rgb(14, 196, 255);
+    border: solid 2px rgb(21, 200, 241);
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: Andale Mono, monospace;   
+}
+
+
+
+
+/*Title*/
+.title {
+    margin: auto;
+    font-weight: 900;
+    color: rgb(255, 165, 30);
+    font-size:34px;
+}
+
+
+
+.textArea {
+    min-height: 100px;
+    background-color: rgb(255, 233, 207);
+}
+
+
+.textArea:focus {
+    background-color: rgb(255, 228, 153);
+}
+
+
+
+
+
+
+/* -------All--Inputs-----*/
+
+.inputDark{
+    font-weight:bold;
+}
+
+    .inputDark:hover {
+        background-color: rgb(254, 244, 168);
+        border: 2px solid rgb(0, 162, 255);
+        border-radius: 5px;
+    }
+
+
+
+
+    .inputDark:focus {
+        outline: none !important;
+        background-color: rgb(165, 222, 255);
+        border: 2px solid rgb(0, 162, 255);
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgb(4, 176, 255);
+    }
+
+
+.boolMiddle {
+    margin: 0 auto 5px auto;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.footerBack{
+    background-color:white; 
+}

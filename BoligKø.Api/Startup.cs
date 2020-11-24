@@ -2,11 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using BoligKø.ApplicationService;
+using BoligKø.ApplicationService.Mapper;
 using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.Commands;
 using BoligKø.Infrastructure.context;
 using BoligKø.Infrastructure.patterns;
 using BoligKø.Infrastructure.Queries;
+using BoligKø.Infrastructure.Queries.interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +41,17 @@ namespace BoligKø.Api
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<AnsøgerCommand>();
             services.AddScoped<AnsøgerQuery>();
+
+            //Dependency Injection
+            services.AddScoped<IAnsøgerQuery, AnsøgerQuery>();
+
+            //Automapper
+            var mapperConfig = new MapperConfiguration(x => x.AddProfile(new AutomapperProfile()));
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            //Midlertidig
+            services.AddSingleton<IAnsøgerApplicationService, FakeApplicationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

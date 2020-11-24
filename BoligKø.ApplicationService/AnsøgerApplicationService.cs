@@ -1,4 +1,5 @@
-﻿using BoligKø.ApplicationService.Dto;
+﻿using AutoMapper;
+using BoligKø.ApplicationService.Dto;
 using BoligKø.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -9,24 +10,36 @@ namespace BoligKø.ApplicationService
 {
     public class AnsøgerApplicationService : IAnsøgerApplicationService
     {
-        public async Task OpretAnsøgerAsync(AnsøgerDto ansøger)
+        private readonly IMapper _mapper;
+
+        public AnsøgerApplicationService(IMapper mapper)
+        {
+            this._mapper = mapper;
+        }
+        public async Task OpretAsync(AnsøgerDto ansøger)
+        {
+            var recordToInsert = new Ansøger();
+            foreach(var a in ansøger.Ansøgninger)
+            {
+
+                recordToInsert.AddAnsøgning(_mapper.Map<Ansøgning>(a));
+
+            }
+        }
+        public async Task EditAsync(AnsøgerDto ansøger)
         {
 
         }
-        public async Task EditAnsøgerAsync(AnsøgerDto ansøger)
+        public async Task SletAsync(AnsøgerDto ansøger)
         {
 
         }
-        public async Task SletAnsøgerAsync(AnsøgerDto ansøger)
-        {
-
-        }
-        public async Task<AnsøgerDto> GetAnsøgerAsync(string id)
+        private async Task<AnsøgerDto> GetAsync(string id)
         {
             throw new NotImplementedException();
 
         }
-        public async Task<IEnumerable<AnsøgerDto>> GetAllAnsøgereAsync()
+        private async Task<IEnumerable<AnsøgerDto>> GetAllAsync()
         {
             throw new NotImplementedException();
 
