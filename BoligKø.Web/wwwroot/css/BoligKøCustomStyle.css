@@ -1,5 +1,5 @@
 ﻿
-
+ /*Custom - Body*/
 .darkBody {
     width:100%;
     height:100%;
@@ -8,6 +8,8 @@
 }
 
  
+
+
 
  /*On error change bacgkround color of inputs*/
     input.input-validation-error,
@@ -22,6 +24,9 @@
 .colorGold {
     color: #ffe668;
 }
+
+
+
 
 
 
@@ -47,6 +52,9 @@
 
 
 
+
+
+
 /*Title*/
 .title {
     margin: auto;
@@ -57,6 +65,11 @@
 
 
 
+
+
+
+
+  /*Text - Box*/
 .textArea {
     min-height: 100px;
     background-color: rgb(255, 233, 207);
@@ -72,7 +85,9 @@
 
 
 
-/* -------All--Inputs-----*/
+
+
+/* ----Inputs-----*/
 
 .inputDark{
     font-weight:bold;
@@ -96,14 +111,42 @@
     }
 
 
-.boolMiddle {
-    margin: 0 auto 5px auto;
-    width: 100%;
-    text-align: center;
-}
 
 
 
-.footerBack{
-    background-color:white; 
-}
+
+
+
+
+   /* Bools - Check-Boxes*/
+   .boolMiddle {
+       margin: 0 auto 5px auto;
+       width: 100%;
+       text-align: center;
+   }
+
+
+
+
+
+
+
+    /*Footer*/
+    .footerBack {
+        background-color: rgb(60, 57, 64);
+        border-top: 2px solid rgb(79, 255, 170);
+    }
+    
+
+    .footerBack a {
+        color: rgb(14, 255, 196);
+        font-weight: 900;
+        font-family: Andale Mono, monospace;
+        border-bottom: 2px solid rgb(79, 255, 110);
+    }
+
+
+
+
+
+
