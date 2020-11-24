@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public class LokationKriterie : Kriterie, IValidateableKriterie
+    public class LokationKriterie : IValidateableKriterie
     {
         public int PostNummer { get; private set; }
         public LokationKriterie(int postNummer)

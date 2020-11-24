@@ -1,6 +1,6 @@
 ﻿namespace BoligKø.Domain.Model
 {
-    public abstract class RangeKriterie : Kriterie, IValidateableKriterie
+    public abstract class RangeKriterie : IValidateableKriterie
     {
         public double Fra { get; set; }
         public double Til { get; set; }

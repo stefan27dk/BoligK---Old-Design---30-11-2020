@@ -6,6 +6,6 @@ namespace BoligKø.Domain.Model
 {
     public abstract class BaseEntity
     {
-        public string Id { get; set; }
+        public string Id { get; protected set; }
     }
 }

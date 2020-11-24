@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public class TilladtDyrKriterie : Kriterie
+    public class TilladtDyrKriterie : IKriterie
     {
         public bool SmåDyr { get; private set; }
         public bool StorDyr { get; private set; }

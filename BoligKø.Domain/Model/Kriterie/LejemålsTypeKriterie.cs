@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public class LejemålsTypeKriterie:Kriterie
+    public class LejemålsTypeKriterie: IKriterie
     {
         public LejemålsType LejemålsType { get; }
         public LejemålsTypeKriterie() { }

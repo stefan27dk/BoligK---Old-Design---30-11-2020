@@ -8,6 +8,6 @@ namespace BoligKø.ApplicationService
     {
         Task EditAsync(AnsøgerDto ansøger);
         Task OpretAsync(AnsøgerDto ansøger);
-        Task SletAsync(AnsøgerDto ansøger);
+        Task SletAsync(string id);
     }
 }
