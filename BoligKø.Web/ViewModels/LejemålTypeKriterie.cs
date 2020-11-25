@@ -9,6 +9,7 @@ namespace BoligKø.Web.ViewModels
     {   
         Lejlighed,
         Hus,
+        Rækkehus,
         Alle
     }
 }

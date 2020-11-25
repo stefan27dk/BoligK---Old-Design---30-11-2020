@@ -1,0 +1,278 @@
+﻿
+ /*Custom - Body*/
+.darkBody {
+    width:100%;
+    height:100%;
+    background-color: rgb(40, 37, 44);
+    color: sandybrown;
+}
+
+ 
+
+
+
+
+
+
+
+
+ /*On error change bacgkround color of inputs*/
+    input.input-validation-error,
+    textarea.input-validation-error,
+    select.input-validation-error {
+    background: rgb(250, 145, 145);
+    border: 1px solid #CD0A0A;
+}
+
+
+
+.colorGold {
+    color: #ffe668;
+}
+
+
+
+
+
+
+
+
+
+
+/*Input Container*/
+.inputContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    margin-top: 2%;
+    padding:20px;
+    min-width: 250px;
+    max-width: 450px;
+    width: 30%;
+    background: linear-gradient(to bottom, rgba(62, 52, 82, 0.397) 50%, #2c1d2e77 80%);
+    color: rgb(14, 196, 255);
+    border: solid 2px rgb(21, 200, 241);
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: Andale Mono, monospace;   
+}
+
+
+
+
+
+
+
+
+
+
+
+/*Title*/
+.title {
+    margin: auto;
+    font-weight: 900;
+    color: rgb(255, 193, 100);
+    font-size: 34px;   
+}
+
+.subTitle {
+    display: block;
+    text-align: center;
+    color: #ffe668;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.lowerSubTitle {
+    display: block;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+  /*Text - Box*/
+.textArea {
+    min-height: 100px;
+    background-color: rgb(255, 233, 207);
+}
+
+
+
+
+.textArea:focus {
+    background-color: rgb(255, 228, 153);
+}
+
+
+
+
+textArea:hover{
+  background-color:aquamarine;
+}
+
+
+
+
+
+
+
+
+/* ----Inputs-----*/
+.inputDark {
+    font-weight: 900;
+    background-color: rgb(190, 254, 226);
+    color: rgb(17, 74, 10);
+}
+
+    .inputDark:hover {
+        background-color: rgb(254, 244, 168);
+        border: 2px solid rgb(0, 162, 255);
+        border-radius: 5px;
+    }
+
+
+
+
+    .inputDark:focus {
+        outline: none !important;
+        background-color: rgb(165, 222, 255);
+        border: 2px solid rgb(0, 162, 255);
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgb(4, 176, 255);
+    }
+
+
+
+
+
+ 
+
+
+
+
+    /*Container for - Aligned Inputs*/
+    .inputSubContainer{
+         display: flex;
+         flex-direction: row;
+         /*justify-content: center;*/
+         /*align-content:space-between;*/
+    }
+
+
+
+
+
+
+
+ 
+
+
+
+
+    /*Footer*/
+    .footerBack {
+        background-color: rgb(60, 57, 64);
+        border-top: 2px solid rgb(79, 255, 170);
+    }
+    
+
+    .footerBack a {
+        color: rgb(14, 255, 196);
+        font-weight: 900;
+        font-family: Andale Mono, monospace;
+        border-bottom: 2px solid rgb(79, 255, 110);
+    }
+
+
+
+
+
+
+
+
+
+    /*Lines*/   
+     .hrSub{
+         border-top: 2px solid rgb(81, 81, 81);
+     }
+
+
+     .hrTitle {
+         width: 100%;
+         border-bottom: 2px solid rgb(255, 226, 0);
+     }
+     
+
+
+
+     /*Select-Menu*/
+     .selectmenu {
+         display: block;
+         margin: auto;
+         height: 40px;
+         border-radius: 5px;
+         background-color: rgb(147, 213, 124);
+         color: rgb(9, 0, 101);
+         font-weight: bold;
+     }
+
+        .selectmenu option {
+            background-color: rgb(147, 213, 124);
+            color: rgb(9, 0, 101);
+            font-weight: bold;
+        }
+
+
+        .selectmenu:hover {
+            background-color: rgb(254, 244, 168);
+            border: solid 2px rgb(4, 176, 255);
+        }
+
+
+
+
+
+        /*Button*/
+.buttonStyle1 {
+    border-radius: 4px;
+    /*border: 2px solid rgb(107,107,107);*/
+    border: none;
+    outline: none;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgb(0, 162, 255) 50%, rgb(0, 162, 255) 80%);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Andale Mono, monospace;
+    font-size: 20px;
+}
+
+    .buttonStyle1:hover {
+       
+        background: linear-gradient(to bottom, rgb(80,86,105) 50%, #6a809c36 80%);
+        color: rgb(155,255,131);
+    }
+
+
+
+    .buttonStyle1:focus {
+        border: none;
+        outline: none;
+    }
+
+
+
+    .buttonStyle1:active {
+        background-color: deepskyblue;
+        color: yellow;
+    }
+
