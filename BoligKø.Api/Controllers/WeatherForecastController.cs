@@ -52,7 +52,7 @@ namespace BoligKø.Api.Controllers
         [Route("/test")]
         public async Task<string> Test()
         {
-            var ansøgere = query.GetAll();
+            var ansøgere = await command.GetAllIncludingAsync();
             return JsonConvert.SerializeObject(ansøgere);
         }
 
