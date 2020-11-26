@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Authorization;
 using BoligKø.Web.Areas.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace BoligKø.Web
 {
@@ -36,14 +37,28 @@ namespace BoligKø.Web
         //====================::Configure - Services::========================================================
         public void ConfigureServices(IServiceCollection services)   // This method gets called by the runtime. Use this method to add services to the container.
         {
-            // Db Context
+            // -----------------Db Context-----------------------------
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => { options.Password.RequireDigit = false; options.Password.RequireLowercase = false; options.Password.RequiredUniqueChars = 0; options.Password.RequireUppercase = false; options.Password.RequireNonAlphanumeric = false; })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // Services
+
+
+            // -----------Authorize all--------------------------------
+            services.AddMvc(options => {
+                var policy = new AuthorizationPolicyBuilder()
+                  .RequireAuthenticatedUser()
+                  .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+
+            }).AddXmlSerializerFormatters();
+
+
+
+
+            // -----------Services-----------------------------------
             services.AddAuthorization(o => o.AddPolicy("Admin", p => p.Requirements.Add(new AdminPermission())));
             services.AddSingleton<IAuthorizationHandler, CustomAuthorizationHandler>();
             services.AddControllersWithViews();

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BoligKø.Web.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -19,15 +20,23 @@ namespace BoligKø.Web.Controllers
             _logger = logger;
         }
 
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
+
+
+
         [Authorize(Policy = "Admin")]
         public IActionResult Privacy()
         {
             return View();
         }
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

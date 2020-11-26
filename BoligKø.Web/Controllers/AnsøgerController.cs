@@ -8,10 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BoligKø.Web.Controllers
 {
-    [Authorize]
+     
     public class AnsøgerController : Controller
     {
-       
+
+
+
+        //==========||Ansøg||=========================================================================
+        //Ansøg - || GET ||
         [HttpGet]
         public IActionResult Ansøg()
         {
@@ -19,13 +23,30 @@ namespace BoligKø.Web.Controllers
         }
 
 
-
+         // Ansøg - || Post ||
         [HttpPost]
         public async Task<IActionResult> Ansøg(AnsøgningViewModel model)
         {
             return View();
         }
 
+
+
+
+
+
+
+
+
+
+        //==========||Create - Ansøger||=========================================================================
+        //Ansøger - || Post ||
+        [HttpPost]
+        public async Task<IActionResult> Create(AnsøgerViewModel model)
+        {
+           //Opret Ansøger Kode Her-->
+            return View();
+        }
 
     }
 }
