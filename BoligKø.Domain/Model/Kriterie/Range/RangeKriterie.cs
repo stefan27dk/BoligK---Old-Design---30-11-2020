@@ -2,6 +2,7 @@
 {
     public abstract class RangeKriterie : IValidateableKriterie
     {
+        
         public double Fra { get; set; }
         public double Til { get; set; }
         public RangeKriterie(double fra, double til)
@@ -10,6 +11,5 @@
             this.Til = til;
         }
 
-        public abstract void ValidateState();
     }
 }

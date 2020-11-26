@@ -13,7 +13,7 @@ namespace BoligKø.ApplicationService.Mapper
         {
             CreateMap<AnsøgningDto, Ansøgning>().ReverseMap();
             CreateMap<AnsøgerDto, Ansøger>().ReverseMap();
-            CreateMap<IKriterieDto, IKriterie>().IncludeAllDerived().ReverseMap();
+            CreateMap<IKriterieDto, Kriterie>().IncludeAllDerived().ReverseMap();
             CreateMap<IValidateableKriterieDto, IValidateableKriterie>().ReverseMap();
             CreateMap<LejemålsTypeKriterieDto, LejemålsTypeKriterie>().ReverseMap();
             CreateMap<LokationKriterieDto, LokationKriterie>().ReverseMap();

@@ -12,7 +12,7 @@ namespace BoligKø.Domain.Model
             this.PostNummer = postNummer;
             ValidateState();
         }
-        public void ValidateState()
+        public override void ValidateState()
         {
             if (PostNummer < 0 || PostNummer > 10000)
             {

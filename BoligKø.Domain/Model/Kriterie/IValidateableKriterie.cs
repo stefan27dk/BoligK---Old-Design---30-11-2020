@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public interface IValidateableKriterie:IKriterie
+    public abstract class IValidateableKriterie:Kriterie
     {
-        void ValidateState();
+        public abstract void ValidateState();
     }
 }
