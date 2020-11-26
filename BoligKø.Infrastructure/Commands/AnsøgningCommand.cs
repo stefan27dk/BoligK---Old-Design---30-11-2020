@@ -1,5 +1,5 @@
-﻿using BoligKø.Domain.Model;
-using BoligKø.Infrastructure.Commands.Interfaces;
+﻿using BoligKø.ApplicationService;
+using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.context;
 using BoligKø.Infrastructure.patterns;
 
