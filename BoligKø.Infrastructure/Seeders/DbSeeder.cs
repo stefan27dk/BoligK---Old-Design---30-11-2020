@@ -74,7 +74,8 @@ namespace BoligKø.Infrastructure.seeders
 
         private static Ansøger CreateAnsøger(string id, string fornavn, string efternavn, string email, string userId)
         {
-            var a = new Ansøger { Id = id };
+            var a = new Ansøger();
+            a.SetId(id);
             a.SetFornavn(fornavn);
             a.SetEfternavn(efternavn);
             a.SetEmail(email);

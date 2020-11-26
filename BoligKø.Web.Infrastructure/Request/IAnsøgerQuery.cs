@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BoligKø.Web.Infrastructure.Request
 {
     interface IAnsøgerQuery
     {
-        AnsøgerDto Get(string UserId);
-        ICollection<AnsøgerDto> GetAll();
+        Task<AnsøgerDto> GetAsync(string UserId);
+        Task<ICollection<AnsøgerDto>> GetAllAsync();
     }
 }

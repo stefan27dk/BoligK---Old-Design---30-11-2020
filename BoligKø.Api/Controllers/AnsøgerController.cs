@@ -66,6 +66,7 @@ namespace BoligKø.Api.Controllers
             foreach(Ansøger a in _ansøgerQuery.GetAll())
             {
                 dtos.Add(_mapper.Map<AnsøgerDto>(a));
+            
             }
 
             return Json(dtos);
