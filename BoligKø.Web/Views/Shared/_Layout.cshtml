@@ -28,25 +28,25 @@
 
 <body>
 
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div class="container">
-            <a class="navbar-brand logo" style="font-size:20px;" href="#">Lejebolig Ansøgnings Portal</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-controller="Home" asp-action="Index"><i class="fas fa-home colorGold"></i>Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" asp-controller="Home" asp-action="Privacy"><i class="far fa-building colorGold"></i>Portfølje</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link"  asp-action="Ansøg" asp-controller="Ansøger"><i class="fas fa-file-signature colorGold"></i>Ansøg</a></li>
-                    <partial style="color: red;" name="_LoginPartial" />   
-                </ul>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient menuBar">
+            <div class="container">
+                <a class="navbar-brand logo" style="font-size:20px;" href="#">Lejebolig Ansøgnings Portal</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" asp-controller="Home" asp-action="Index"><i class="fas fa-home colorGold"></i>Home</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" asp-controller="Home" asp-action="Privacy"><i class="far fa-building colorGold"></i>Portfølje</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link"  asp-action="Ansøg" asp-controller="Ansøger"><i class="fas fa-file-signature colorGold"></i>Ansøg</a></li>
+                        <partial style="color: red;" name="_LoginPartial" />
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-
+       
 
     <main class="page landing-page">
         @RenderBody()
-       
+
     </main>
 
 

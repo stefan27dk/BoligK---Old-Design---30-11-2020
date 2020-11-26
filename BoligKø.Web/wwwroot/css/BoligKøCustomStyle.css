@@ -1,5 +1,7 @@
 ﻿
- /*Custom - Body*/
+
+
+/*<----------------Custom - Body-------------------------->*/
 .darkBody {
     width:100%;
     height:100%;
@@ -16,7 +18,7 @@
 
 
 
- /*On error change bacgkround color of inputs*/
+/*<----------------On error change bacgkround color of inputs-------------------------->*/
     input.input-validation-error,
     textarea.input-validation-error,
     select.input-validation-error {
@@ -39,7 +41,7 @@
 
 
 
-/*Input Container*/
+/*<----------------Input Container-------------------------->*/
 .inputContainer {
     margin-left: auto;
     margin-right: auto;
@@ -67,13 +69,19 @@
 
 
 
-/*Title*/
+/*<----------------Title-------------------------->*/
 .title {
     margin: auto;
     font-weight: 900;
     color: rgb(255, 193, 100);
     font-size: 34px;   
 }
+
+
+
+
+
+/*<---------------Sub-Title-------------------------->*/
 
 .subTitle {
     display: block;
@@ -84,6 +92,9 @@
 }
 
 
+
+
+/*<---------------Lower-Sub-Title-------------------------->*/
 .lowerSubTitle {
     display: block;
     text-align: center;
@@ -99,7 +110,7 @@
 
 
 
-  /*Text - Box*/
+/*<----------------Text - Box-------------------------->*/
 .textArea {
     min-height: 100px;
     background-color: rgb(255, 233, 207);
@@ -126,12 +137,16 @@ textArea:hover{
 
 
 
-/* ----Inputs-----*/
-.inputDark {
-    font-weight: 900;
-    background-color: rgb(190, 254, 226);
-    color: rgb(17, 74, 10);
-}
+
+
+
+/*<----------------Inputs-------------------------->*/
+    .inputDark {
+        font-weight: 900;
+        background-color: rgb(190, 254, 226);
+        color: rgb(17, 74, 10);
+    }
+
 
     .inputDark:hover {
         background-color: rgb(254, 244, 168);
@@ -159,7 +174,8 @@ textArea:hover{
 
 
 
-    /*Container for - Aligned Inputs*/
+
+/*<----------------Container for - Aligned Inputs-------------------------->*/
     .inputSubContainer{
          display: flex;
          flex-direction: row;
@@ -178,7 +194,7 @@ textArea:hover{
 
 
 
-    /*Footer*/
+/*<----------------Footer-------------------------->*/
     .footerBack {
         background-color: rgb(60, 57, 64);
         border-top: 2px solid rgb(79, 255, 170);
@@ -200,7 +216,7 @@ textArea:hover{
 
 
 
-    /*Lines*/   
+/*<----------------Lines-------------------------->*/
      .hrSub{
          border-top: 2px solid rgb(81, 81, 81);
      }
@@ -214,7 +230,11 @@ textArea:hover{
 
 
 
-     /*Select-Menu*/
+
+
+
+
+/*<----------------Select-Menu-------------------------->*/
      .selectmenu {
          display: block;
          margin: auto;
@@ -241,26 +261,34 @@ textArea:hover{
 
 
 
-        /*Button*/
-.buttonStyle1 {
-    border-radius: 4px;
-    /*border: 2px solid rgb(107,107,107);*/
-    border: none;
-    outline: none;
-    width: 80px;
-    height: 40px;
-    background: linear-gradient(to bottom, rgb(0, 162, 255) 50%, rgb(0, 162, 255) 80%);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-family: Andale Mono, monospace;
-    font-size: 20px;
-}
+
+
+
+
+   /*<----------------Button-------------------------->*/
+    .buttonStyle1 {
+        border-radius: 4px;
+        /*border: 2px solid rgb(107,107,107);*/
+        border: none;
+        outline: none;
+        width: 80px;
+        height: 40px;
+        background: linear-gradient(to bottom, rgb(0, 162, 255) 50%, rgb(0, 162, 255) 80%);
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-family: Andale Mono, monospace;
+        font-size: 20px;
+    }
+    
+
+
 
     .buttonStyle1:hover {
        
         background: linear-gradient(to bottom, rgb(80,86,105) 50%, #6a809c36 80%);
         color: rgb(155,255,131);
     }
+
 
 
 
@@ -276,3 +304,81 @@ textArea:hover{
         color: yellow;
     }
 
+
+
+
+
+
+
+
+
+
+/*<===========================::::HOME-PAGE-STYLE:::==============================>*/
+
+
+
+/* -------------------TOP--BAR--DIV/Nav--------------------*/
+.topBar {
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    /* background-color: rgb(37, 31, 31); */
+    background: linear-gradient(to bottom, rgba(69, 79, 97) 10%, #202729 90%);
+    border-bottom: solid 2px rgb(80, 92, 95);
+}
+
+
+
+
+
+
+/* -------------------TOP--BAR--Item--------------------*/
+.topBarItem {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+/* -------------------Top-Menu--------------------*/
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: red;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+
+
+.dropdown:hover .dropdown-content
+{
+    display: block;
+}
+
+
+
+
+
+
+
+/*
+.bottomUl {   
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    
+}*/

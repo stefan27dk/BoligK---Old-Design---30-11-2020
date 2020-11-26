@@ -18,8 +18,10 @@ using BoligKø.Web.Areas.Authorization;
 
 namespace BoligKø.Web
 {
+   
     public class Startup
     {
+        // Startup
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,23 +29,39 @@ namespace BoligKø.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+
+
+
+
+        //====================::Configure - Services::========================================================
+        public void ConfigureServices(IServiceCollection services)   // This method gets called by the runtime. Use this method to add services to the container.
         {
+            // Db Context
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => { options.Password.RequireDigit = false; options.Password.RequireLowercase = false; options.Password.RequiredUniqueChars = 0; options.Password.RequireUppercase = false; options.Password.RequireNonAlphanumeric = false; })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // Services
             services.AddAuthorization(o => o.AddPolicy("Admin", p => p.Requirements.Add(new AdminPermission())));
             services.AddSingleton<IAuthorizationHandler, CustomAuthorizationHandler>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+
+
+
+
+
+
+        //====================::Configure::========================================================    
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         {
+
+
+            // Default
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -56,10 +74,8 @@ namespace BoligKø.Web
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
+            app.UseStaticFiles();   
+            app.UseRouting();  
             app.UseAuthentication();
             app.UseAuthorization();
 
