@@ -1,0 +1,115 @@
+﻿
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager;
+
+@using BoligKø.Web.ViewModels;
+@model AnsøgerViewModel
+
+@{
+    ViewBag.Title = "Oplysninger - Ansøger";
+}
+
+
+
+<link href="~/css/BoligKøCustomStyle.css" rel="stylesheet" />
+
+<body class="darkBody">
+    <div class="row inputContainer">
+        <h4 class="title">Opret Ansøger</h4>
+        <hr class="hrTitle">
+        <br />
+        <br />
+        <br />
+        <div class="col-md-12">
+
+
+            <form method="post">
+
+
+                <!--------Current - User-Id--As--AnsøgerId-------->
+                <input type="hidden" asp-for="Id" value="@signInManager.UserManager.GetUserId(User)" />
+
+
+
+                <!--------Fornavn---------->
+                <div class="form-group">
+                    <label asp-for="Fornavn"></label>
+                    <input type="text" maxlength="20" onkeypress="return lettersValidate(event)" asp-for="Fornavn" class="form-control inputDark" />
+                    <span asp-validation-for="Fornavn" class="text-danger"></span>
+                </div>
+
+
+
+
+                <hr class="hrSub">
+
+
+
+
+                <!--------Efternavn---------->
+                <div class="form-group">
+                    <label asp-for="Efternavn"></label>
+                    <input type="text" maxlength="20" onkeypress="return lettersValidate(event)" asp-for="Efternavn" class="form-control inputDark" />
+                    <span asp-validation-for="Efternavn" class="text-danger"></span>
+                </div>
+
+
+
+
+
+                <hr class="hrSub">
+
+
+
+
+                <!--------Enail---------->
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input type="text" maxlength="200" asp-for="Email" value="@User.Identity.Name" class="form-control inputDark" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+
+
+
+
+
+
+                <!--------Tlf---------->
+                <div class="form-group">
+                    <label asp-for="Tlf"></label>
+                    <input type="tel" maxlength="8" asp-for="Tlf" onkeypress="return numValidate(event)" class="form-control inputDark" />
+                    <span asp-validation-for="Tlf" class="text-danger"></span>
+                </div>
+
+
+
+
+
+
+
+                <!--------Error-Text---------->
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+                <!--------Opret---------->
+                <br />
+                <button type="submit" class="buttonStyle1">Opret</button>
+
+            </form>
+
+
+
+
+
+
+
+
+            <!--------Custom--Validator-------------->
+            <script src="~/js/CustomClientSideValidator.js"></script>
+
+        </div>
+    </div>
+</body>
+

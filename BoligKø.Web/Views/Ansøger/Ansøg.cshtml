@@ -26,7 +26,7 @@
             <form method="post">
 
                 <input type="hidden" asp-for="UserId" value="@signInManager.UserManager.GetUserId(User)" />
-
+                <span asp-validation-for="UserId" class="text-danger"></span>
 
                 <!--------Post-Nr---------->
                 <div class="form-group">
@@ -155,13 +155,13 @@
                 <div class="form-group">
                     <hr class="hrSub">
                     <label class="subTitle" asp-for="LejemålsType"></label>
-                
-                        <select asp-for="LejemålsType" class="selectmenu"
-                                asp-items="Html.GetEnumSelectList<LejemålTypeKriterie>()">
-                            <option value="">-----Valg Type-----</option>
-                        </select>
-                        <span asp-validation-for="LejemålsType" class="text-danger"></span>
-                  
+
+                    <select asp-for="LejemålsType" class="selectmenu"
+                            asp-items="Html.GetEnumSelectList<LejemålTypeKriterie>()">
+                        <option value="">-----Valg Type-----</option>
+                    </select>
+                    <span asp-validation-for="LejemålsType" class="text-danger"></span>
+
                 </div>
 
 

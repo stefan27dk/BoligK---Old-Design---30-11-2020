@@ -39,13 +39,35 @@ namespace BoligKø.Web.Controllers
 
 
 
-        //==========||Create - Ansøger||=========================================================================
-        //Ansøger - || Post ||
-        [HttpPost]
-        public async Task<IActionResult> Create(AnsøgerViewModel model)
-        {
-           //Opret Ansøger Kode Her-->
+        //==========||Opret - Ansøger||=========================================================================
+
+
+        //Oplysninger - Ansøger - || GET ||
+        [HttpGet]
+        public IActionResult Oplysninger()
+        {  
             return View();
+        }
+
+
+
+
+
+
+        //Oplysninger - Ansøger - || Post ||
+        [HttpPost]
+        public async Task<IActionResult> Oplysninger(AnsøgerViewModel model)
+        {
+
+            return View();
+            //if (ModelState.IsValid)
+            //{
+            //    //Opret Ansøger Kode Her-->
+            //    return RedirectToAction("Index", "Home");
+            //}
+
+            //return RedirectToPage("Error");
+
         }
 
     }

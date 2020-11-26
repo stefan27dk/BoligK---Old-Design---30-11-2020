@@ -3,7 +3,7 @@
 
 
  
-    // Allow - Only Numbers
+    // ===================== Allow - Only Numbers ===============================================================
     function numValidate(key) {
                 var keycode = (key.which) ? key.which : key.keyCode;
 
@@ -19,9 +19,28 @@
 
 
 
+
+    // ===================== Allow - Only Letters ===============================================================
+ 
+    function lettersValidate(key) {
+        var keycode = (key.which) ? key.which : key.keyCode;
+
+        if ((keycode > 64 && keycode < 91) || (keycode > 96 && keycode < 123))  
+        {     
+               return true;    
+        }
+        else
+        {
+            return false;
+        }
+             
+    }
+     
+
+
  
 
-     // Check From / To - Compare Values
+     // ================================ Check From / To - Compare Values ===========================================================
     function validateFromTo(a, b) {
 
         var aElem = document.getElementById(a); // From
