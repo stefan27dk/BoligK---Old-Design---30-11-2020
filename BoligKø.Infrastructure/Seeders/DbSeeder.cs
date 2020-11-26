@@ -69,7 +69,8 @@ namespace BoligKø.Infrastructure.seeders
 
         private static Ansøger CreateAnsøger(string id, string fornavn, string efternavn, string email, string userId)
         {
-            var a = new Ansøger { Id = id };
+            var a = new Ansøger();
+            a.SetId(id);
             a.SetFornavn(fornavn);
             a.SetEfternavn(efternavn);
             a.SetEmail(email);
@@ -79,7 +80,8 @@ namespace BoligKø.Infrastructure.seeders
 
         private static Ansøgning CreateAnsøgning(string id, Ansøger ansøger, string øvrigeKommentare)
         {
-            var a = new Ansøgning { Id = id };
+            var a = new Ansøgning();
+            a.SetId(id);
             a.SetAnsøger(ansøger);
             a.SetØvrigKommentar(øvrigeKommentare);
             return a;
