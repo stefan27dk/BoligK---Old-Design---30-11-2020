@@ -1,5 +1,7 @@
 ﻿
 
+  
+
 
 /*<----------------Custom - Body-------------------------->*/
 .darkBody {
@@ -194,21 +196,6 @@ textArea:hover{
 
 
 
-/*<----------------Footer-------------------------->*/
-    .footerBack {
-        background-color: rgb(60, 57, 64);
-        border-top: 2px solid rgb(79, 255, 170);
-    }
-    
-
-    .footerBack a {
-        color: rgb(14, 255, 196);
-        font-weight: 900;
-        font-family: Andale Mono, monospace;
-        border-bottom: 2px solid rgb(79, 255, 110);
-    }
-
-
 
 
 
@@ -293,7 +280,7 @@ textArea:hover{
 
 
     .buttonStyle1:focus {
-        border: none;
+        border: solid 3px red;
         outline: none;
     }
 
@@ -304,6 +291,14 @@ textArea:hover{
         color: yellow;
     }
 
+
+        .buttonStyle1::selection{
+            background-color: red;
+            color: yellow;
+        }
+
+      
+}
 
 
 
@@ -373,6 +368,24 @@ textArea:hover{
 
 
 
+
+/*<----------------Footer-------------------------->*/
+.footerBack {
+    background-color: rgb(60, 57, 64);
+    border-top: 2px solid rgb(79, 255, 170);
+    
+}
+
+
+    .footerBack a {
+        color: rgb(14, 255, 196);
+        font-weight: 900;
+        font-family: Andale Mono, monospace;
+        border-bottom: 2px solid rgb(79, 255, 110);
+    }
+
+
+ 
 
 /*
 .bottomUl {   
