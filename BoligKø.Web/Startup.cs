@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Authorization;
 using BoligKø.Web.Areas.Authorization;
+using BoligKø.Web.Infrastructure.Request;
 
 namespace BoligKø.Web
 {
@@ -37,6 +38,10 @@ namespace BoligKø.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddAuthorization(o => o.AddPolicy("Admin", p => p.Requirements.Add(new AdminPermission())));
             services.AddSingleton<IAuthorizationHandler, CustomAuthorizationHandler>();
+
+            //Dependency Injection
+            services.AddScoped<IAnsøgerQuery, AnsøgerQuery>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

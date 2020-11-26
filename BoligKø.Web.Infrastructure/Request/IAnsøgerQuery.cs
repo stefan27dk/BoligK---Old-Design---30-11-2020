@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoligKø.Web.Infrastructure.Request
 {
-    interface IAnsøgerQuery
+    public interface IAnsøgerQuery
     {
         Task<AnsøgerDto> GetAsync(string UserId);
         Task<ICollection<AnsøgerDto>> GetAllAsync();
