@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BoligKø.Web.ViewModels
+namespace BoligKø.Web.Models
 {
     public enum LejemålTypeKriterie
     {   
