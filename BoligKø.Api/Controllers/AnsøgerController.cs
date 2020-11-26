@@ -50,7 +50,7 @@ namespace BoligKø.Api.Controllers
 
             if (dto == null) return Json("Ansøger not found");
 
-            await _ansøgerService.SletAsync(dto);
+            await _ansøgerService.SletAsync(dto.Id);
 
             return Json(dto);
         }

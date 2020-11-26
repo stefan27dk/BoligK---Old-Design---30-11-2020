@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BoligKø.Api
 {
-    public class FakeApplicationService:IAnsøgerApplicationService
+    public class FakeApplicationService : IAnsøgerApplicationService
     {
         //uidsfhusdfhsdi
         //HIIdhsoisdf
@@ -77,6 +77,11 @@ namespace BoligKø.Api
         public async Task OpretAsync(AnsøgerDto dto)
         {
             ansøgers.Add(dto);
+        }
+
+        public Task SletAsync(string id)
+        {
+            throw new NotImplementedException();
         }
 
         //private readonly IAnsøgerQuery _ansøgerQuery;

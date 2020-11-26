@@ -48,17 +48,17 @@ namespace BoligKø.Infrastructure.seeders
         {
             var ansøgere = new List<Ansøger>();
 
-            var a1 = CreateAnsøger("1", "Karl", "Mogensen", "karl0844@edu.ucl.dk", "u1");
-            var ansøgning = CreateAnsøgning("a1", a1, "Ansøgningens øvrige kommentarer");
+            var a1 = CreateAnsøger(GetGuid(), "Karl", "Mogensen", "karl0844@edu.ucl.dk", GetGuid());
+            var ansøgning = CreateAnsøgning(GetGuid(), a1, "Ansøgningens øvrige kommentarer");
             a1.AddAnsøgning(ansøgning);
             ansøgere.Add(a1);
 
 
-            var a2 = CreateAnsøger("2", "Martin", "Sørensen", "mart95s9@edu.ucl.dk", "u2");
+            var a2 = CreateAnsøger(GetGuid(), "Martin", "Sørensen", "mart95s9@edu.ucl.dk", GetGuid());
             ansøgere.Add(a2);
-            var a3 = CreateAnsøger("3", "Stefan", "Popov", "stef9633@edu.ucl.dk", "u3");
+            var a3 = CreateAnsøger(GetGuid(), "Stefan", "Popov", "stef9633@edu.ucl.dk", GetGuid());
             ansøgere.Add(a3);
-            var a4 = CreateAnsøger("4", "Nichlas", "Christensen", "nich1411@edu.ucl.dk", "u4");
+            var a4 = CreateAnsøger(GetGuid(), "Nichlas", "Christensen", "nich1411@edu.ucl.dk", GetGuid());
             ansøgere.Add(a4);
 
 
@@ -67,9 +67,16 @@ namespace BoligKø.Infrastructure.seeders
             return ansøgere;
         }
 
+        private static string GetGuid()
+        {
+            return Guid.NewGuid().ToString();
+        }
+
         private static Ansøger CreateAnsøger(string id, string fornavn, string efternavn, string email, string userId)
         {
             var a = new Ansøger();
+            var length = id.Length;
+
             a.SetId(id);
             a.SetFornavn(fornavn);
             a.SetEfternavn(efternavn);

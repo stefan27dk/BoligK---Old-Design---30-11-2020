@@ -9,11 +9,11 @@ namespace BoligKø.Domain.Model
     {
         public Ansøger Ansøger { get; private set; }
         public string ØvrigKommentar { get; private set; }
-        public ICollection<IKriterie> Kriterier { get; private set; }
+        public ICollection<Kriterie> Kriterier { get; private set; }
         public bool Aktiv { get; private set; }
         public Ansøgning()
         {
-            Kriterier = new List<IKriterie>();
+            Kriterier = new List<Kriterie>();
         }
         public void ValidateState()
         {
@@ -41,7 +41,7 @@ namespace BoligKø.Domain.Model
             ØvrigKommentar = value;
 
         }
-        public void Addkriterie(IKriterie kriterie)
+        public void Addkriterie(Kriterie kriterie)
         {
             var type = kriterie.GetType();
             var nullCheck = Kriterier.Where(x => x.GetType() == kriterie.GetType()).FirstOrDefault();
@@ -49,7 +49,7 @@ namespace BoligKø.Domain.Model
                 Kriterier.Add(kriterie);
             else throw new StateException("1 kriterie kan kun  optræde 1 gang, opdater istedet");
         }
-        public void UpdateKriterie(IKriterie kriterie)
+        public void UpdateKriterie(Kriterie kriterie)
         {
 
         }

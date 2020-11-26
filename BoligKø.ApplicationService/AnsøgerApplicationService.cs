@@ -27,7 +27,7 @@ namespace BoligKø.ApplicationService
 
                 foreach(var kriterie in a.Kriterier)
                 {
-                    ansøgningToInsert.Addkriterie(_mapper.Map<IKriterie>(kriterie));
+                    ansøgningToInsert.Addkriterie(_mapper.Map<Kriterie>(kriterie));
                 }
                 recordToInsert.AddAnsøgning(ansøgningToInsert);
             }
