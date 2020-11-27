@@ -15,11 +15,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Authorization;
 using BoligKø.Web.Areas.Authorization;
-<<<<<<< HEAD
+ 
 using Microsoft.AspNetCore.Mvc.Authorization;
-=======
+ 
 using BoligKø.Web.Infrastructure.Request;
->>>>>>> 406005327b9f2ee4a9ee51bc704c3ea6da4ebd0a
+ 
 
 namespace BoligKø.Web
 {
