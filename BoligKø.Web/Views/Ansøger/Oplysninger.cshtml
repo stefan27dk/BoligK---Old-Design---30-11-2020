@@ -23,9 +23,8 @@
         <div class="col-md-12">
 
 
-            <form method="post">
-
-
+            <form asp-action="Oplysninger" asp-controller="Ansøger" method="post">
+                  
                 <!--------Current - User-Id--As--AnsøgerId-------->
                 <input type="hidden" asp-for="Id" value="@signInManager.UserManager.GetUserId(User)" />
 
@@ -95,7 +94,7 @@
 
                 <!--------Opret---------->
                 <br />
-                <button type="submit" class="buttonStyle1">Opret</button>
+                <button type="submit" asp-route-returnUrl=" @Html.TempData["ReturnUrl"]"  class="buttonStyle1">Opret</button>
 
             </form>
 
