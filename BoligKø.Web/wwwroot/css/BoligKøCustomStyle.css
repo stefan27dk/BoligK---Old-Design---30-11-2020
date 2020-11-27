@@ -274,7 +274,7 @@ textArea:hover{
         /*border: 2px solid rgb(107,107,107);*/
         border: none;
         outline: none;
-        width: 80px;
+        width: auto;
         height: 40px;
         background: linear-gradient(to bottom, rgb(0, 162, 255) 50%, rgb(0, 162, 255) 80%);
         color: rgb(255, 255, 255);
