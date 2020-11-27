@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public class LokationKriterie : Kriterie, IValidateableKriterie
+    public class LokationKriterie : IValidateableKriterie
     {
         public int PostNummer { get; private set; }
         public LokationKriterie(int postNummer)
@@ -12,7 +12,7 @@ namespace BoligKø.Domain.Model
             this.PostNummer = postNummer;
             ValidateState();
         }
-        public void ValidateState()
+        public override void ValidateState()
         {
             if (PostNummer < 0 || PostNummer > 10000)
             {

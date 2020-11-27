@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Web.Infrastructure.Request
 {
-    interface IAnsøgningQuery
+    public interface IAnsøgningQuery
     {
         object Get(string AnsøgningsId);
         ICollection<object> GetAll();

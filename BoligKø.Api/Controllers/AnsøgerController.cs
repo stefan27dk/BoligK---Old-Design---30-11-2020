@@ -12,6 +12,7 @@ using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.patterns;
 using Microsoft.EntityFrameworkCore;
 using BoligKø.Infrastructure.context;
+using AutoMapper;
 
 namespace BoligKø.Api.Controllers
 {
@@ -22,20 +23,23 @@ namespace BoligKø.Api.Controllers
     {
         private readonly IAnsøgerApplicationService _ansøgerService;
         private readonly IAnsøgerQuery _ansøgerQuery;
+        private readonly IMapper _mapper;
         
         public AnsøgerController(
             IAnsøgerApplicationService service,
-            IAnsøgerQuery query)
+            IAnsøgerQuery query,
+            IMapper mapper)
         {
             _ansøgerService = service;
             _ansøgerQuery = query;
+            _mapper = mapper;
         }
 
         [Route("{id}")]
         [HttpGet]
         public async Task<JsonResult> Get(string id)
         {
-            AnsøgerDto dto = Mapping.MapAnsøger(_ansøgerQuery.GetById(id));
+            AnsøgerDto dto = _mapper.Map<AnsøgerDto>(_ansøgerQuery.GetById(id));
 
             if (dto == null) return Json("Ansøger Not found");
 
@@ -50,7 +54,7 @@ namespace BoligKø.Api.Controllers
 
             if (dto == null) return Json("Ansøger not found");
 
-            await _ansøgerService.SletAsync(dto);
+            await _ansøgerService.SletAsync(id);
 
             return Json(dto);
         }
@@ -61,7 +65,8 @@ namespace BoligKø.Api.Controllers
 
             foreach(Ansøger a in _ansøgerQuery.GetAll())
             {
-                dtos.Add(Mapping.MapAnsøger(a));
+                dtos.Add(_mapper.Map<AnsøgerDto>(a));
+            
             }
 
             return Json(dtos);

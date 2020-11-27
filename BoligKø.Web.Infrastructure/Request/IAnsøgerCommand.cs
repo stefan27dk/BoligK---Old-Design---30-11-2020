@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BoligKø.Web.Infrastructure.Request
 {
-    interface IAnsøgerCommand
+    public interface IAnsøgerCommand
     {
         void Create(object Ansøger);
         void Delete(string UserId);

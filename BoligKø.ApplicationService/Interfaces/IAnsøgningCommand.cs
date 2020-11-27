@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BoligKø.Infrastructure.Commands.Interfaces
+namespace BoligKø.ApplicationService
 {
     public interface IAnsøgningCommand
     {

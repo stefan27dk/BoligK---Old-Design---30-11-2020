@@ -19,30 +19,42 @@ namespace BoligKø.Domain.Model
         }
         public void ValidateState()
         {
-
+            if (Email == string.Empty || Fornavn == string.Empty || Efternavn == string.Empty || UserId == string.Empty)
+                throw new StateException("Ansøger invalid state");
+        }
+        public void SetId(string value)
+        {
+            if (value.Length != 36)
+                throw new InvalidIDException("Guid's længde skal være 36 tegn");
+            Id = value;
         }
         public void SetEmail(string value)
         {
+            //ved godt det ikke er den bedste test af e-mail
+            if (!value.Contains("@") || !value.Contains("."))
+                throw new InvalidEmailException("E-mail skal indeholde @ og .");
             Email = value;
-            ValidateState();
 
         }
         public void SetFornavn(string value)
         {
+            if (value.Length == 0 || value == string.Empty)
+                throw new EmptyStringException("Kan ikke sætte tom streng");
             Fornavn = value;
-            ValidateState();
 
         }
         public void SetEfternavn(string value)
         {
+            if (value.Length == 0 || value == string.Empty)
+                throw new EmptyStringException("Kan ikke sætte tom streng");
             Efternavn = value;
-            ValidateState();
 
         }
         public void SetUserId(string value)
         {
+            if (value.Length != 36)
+                throw new InvalidIDException("Guid's længde skal være 36 tegn");
             UserId = value;
-            ValidateState();
 
         }
         public void AddAnsøgning(Ansøgning a)
@@ -50,11 +62,7 @@ namespace BoligKø.Domain.Model
             //man må kun have 1 aktiv ansøgning
             if (Ansøgninger.Any(x => x.Aktiv == true) && a.Aktiv == true)
                 throw new MaxAnsøgningsKapacitetException("Max 1 aktiv ansøgning");
-            var temp = Ansøgninger.ToList();
-            temp.Add(a);
-            Ansøgninger = temp;
-            ValidateState();
-
+            Ansøgninger.Add(a);
         }
 
     }

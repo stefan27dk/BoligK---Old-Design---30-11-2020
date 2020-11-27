@@ -6,8 +6,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BoligKø.Infrastructure.Commands.Interfaces
-{
+namespace BoligKø.ApplicationService
+{ 
     public interface IAnsøgerCommand
     {
         public Task<ICollection<Ansøger>> GetAllAsync();

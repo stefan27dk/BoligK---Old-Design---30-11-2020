@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BoligKø.ApplicationService;
 using BoligKø.ApplicationService.Mapper;
+using BoligKø.Domain.DomainService;
 using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.Commands;
 using BoligKø.Infrastructure.context;
@@ -35,7 +36,7 @@ namespace BoligKø.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
             services.AddDbContext<BoligKøContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -44,6 +45,9 @@ namespace BoligKø.Api
 
             //Dependency Injection
             services.AddScoped<IAnsøgerQuery, AnsøgerQuery>();
+            services.AddScoped<ApplicationService.IAnsøgerCommand, AnsøgerCommand>();
+            services.AddScoped<IAnsøgningCommand, AnsøgningCommand>();
+            services.AddScoped<IAnsøgerAnsøgningDomainService, AnsøgerAnsøgningDomainService>();
 
             //Automapper
             var mapperConfig = new MapperConfiguration(x => x.AddProfile(new AutomapperProfile()));
@@ -51,7 +55,8 @@ namespace BoligKø.Api
             services.AddSingleton(mapper);
 
             //Midlertidig
-            services.AddSingleton<IAnsøgerApplicationService, FakeApplicationService>();
+            services.AddScoped<IAnsøgerApplicationService, AnsøgerApplicationService>();
+            services.AddScoped<IAnsøgningApplicationService, AnsøgningApplicationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

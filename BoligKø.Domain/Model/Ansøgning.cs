@@ -9,43 +9,53 @@ namespace BoligKø.Domain.Model
     {
         public Ansøger Ansøger { get; private set; }
         public string ØvrigKommentar { get; private set; }
-        public IEnumerable<Kriterie> Kriterier { get; private set; }
+        public ICollection<Kriterie> Kriterier { get; private set; }
         public bool Aktiv { get; private set; }
         public Ansøgning()
         {
             Kriterier = new List<Kriterie>();
         }
-        private void ValidateState()
+        public void ValidateState()
         {
             if (Ansøger == null)
-                throw new AnsøgningsNullException("Ingen ansøger koblet på ansøgning");
+                throw new StateException("Ingen ansøger koblet på ansøgning");
+            
 
-
+        }
+        public void SetId(string value)
+        {
+            if (value.Length != 36)
+                throw new InvalidIDException("Guid's længde skal være 36 tegn");
+            Id = value;
         }
         public void SetAnsøger(Ansøger ansøger)
         {
+            if (ansøger == null)
+                throw new ArgumentNullException("Ansøger var null");
             Ansøger = ansøger;
-            ValidateState();
         }
         public void SetØvrigKommentar(string value)
         {
+            if (value.Length == 0 || value == string.Empty)
+                throw new EmptyStringException("Kan ikke sætte tom streng");
             ØvrigKommentar = value;
-            ValidateState();
 
         }
         public void Addkriterie(Kriterie kriterie)
         {
-            var temp = Kriterier.ToList();
-            temp.Add(kriterie);
-            Kriterier = temp;
-            ValidateState();
+            var type = kriterie.GetType();
+            var nullCheck = Kriterier.Where(x => x.GetType() == kriterie.GetType()).FirstOrDefault();
+            if (nullCheck == null)
+                Kriterier.Add(kriterie);
+            else throw new StateException("1 kriterie kan kun  optræde 1 gang, opdater istedet");
+        }
+        public void UpdateKriterie(Kriterie kriterie)
+        {
 
         }
         public void SetAktiv(bool value)
         {
             Aktiv = value;
-            ValidateState();
-
         }
     }
 }
