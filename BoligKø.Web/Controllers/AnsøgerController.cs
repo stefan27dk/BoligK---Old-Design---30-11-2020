@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BoligKø.Web.Infrastructure.Dto;
+using BoligKø.Web.Infrastructure.Request;
 using BoligKø.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -17,13 +19,14 @@ namespace BoligKø.Web.Controllers
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
 
-
+        private readonly IAnsøgerQuery ansøgerQuery;
 
         // || Constructor || ========================================================================
-        public AnsøgerController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AnsøgerController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IAnsøgerQuery ansøgerQuery)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.ansøgerQuery = ansøgerQuery;
         }
 
 
@@ -43,9 +46,9 @@ namespace BoligKø.Web.Controllers
 
 
             //:::::::::::::::::::::::::::::::::::::Rigtigt kode   
-            //var result = AnsøgerQueryApiService.AnsøgerExists(signInManager.UserManager.GetUserId(User)); // Returns true or false
+            //var result = ansøgerQuery.GetAsync(signInManager.UserManager.GetUserId(User));  
 
-            //if (result == true)
+            //if (result != null)
             //{
             //    return View();
             //}
@@ -113,7 +116,7 @@ namespace BoligKø.Web.Controllers
         //==========||Opret - Ansøger||=========================================================================   
         //Oplysninger - Ansøger - || GET ||
         [HttpGet]
-        public IActionResult Oplysninger()
+        public async Task<IActionResult> Oplysninger()
         {
             // Ikke nu !!!!!!!!!!!!if---> bool(ikke eksister == true) ---> return Empty View
             //Ikke nu !!!!!!!!!!!!!!Else ---> if---> bool(ikke eksister == false) ---> Søg i DB og hent Data
@@ -123,11 +126,12 @@ namespace BoligKø.Web.Controllers
 
 
             //::::::::::::::::::::::::::::::::::::::::::::Rigtigt kode    
-            //var model = AnsøgerQueryService.GetAnsøgerById(signInManager.UserManager.GetUserId(User)); // Returns Ansøger model
+            //AnsøgerDto dto = await ansøgerQuery.GetAsync(signInManager.UserManager.GetUserId(User)); // Returns Ansøger ViewModel
 
-            //if (model != null)
+            //if (dto != null)
             //{
-            //    return View(model);
+            //    var viewModel = new AnsøgerViewModel { Fornavn = dto.Fornavn, Efternavn = dto.Efternavn, Email = dto.Email, Id = dto.UserId, Tlf = 33333333 }; 
+            //    return View(viewModel);
             //}
             //else
             //{
@@ -155,9 +159,10 @@ namespace BoligKø.Web.Controllers
             //if (ModelState.IsValid)
             //{
             //    // Check Ansøger
-            //    var result = AnsøgerQueryApiService.AnsøgerExists(signInManager.UserManager.GetUserId(User)); // Returns true or false
+            //    var apiModel = ansøgerQuery.GetAsync(signInManager.UserManager.GetUserId(User)); // Returns Ansøger ViewModel
 
-            //    if (result == false)
+
+            //    if (apiModel == null)
             //    {
             //        //Opret Ansøger Kode Her-------------->
             //        if (AnsøgerCommandApiService.OpretAnsøger(model)) // returns true or false
@@ -182,7 +187,7 @@ namespace BoligKø.Web.Controllers
             //        }
             //    }
 
-               
+
             //}
             //else
             //{
