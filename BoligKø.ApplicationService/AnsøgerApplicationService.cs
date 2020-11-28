@@ -24,11 +24,8 @@ namespace BoligKø.ApplicationService
             foreach(var a in ansøger.Ansøgninger)
             {
                 var ansøgningToInsert = _mapper.Map<Ansøgning>(a);
-
-                foreach(var kriterie in a.Kriterier)
-                {
-                    ansøgningToInsert.Addkriterie(_mapper.Map<Kriterie>(kriterie));
-                }
+                ansøgningToInsert.SetAnsøger(recordToInsert);
+                ansøgningToInsert.ValidateState();
                 recordToInsert.AddAnsøgning(ansøgningToInsert);
             }
             recordToInsert.ValidateState();

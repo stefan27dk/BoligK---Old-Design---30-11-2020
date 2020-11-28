@@ -19,8 +19,17 @@ namespace BoligKø.Domain.Model
         {
             if (Ansøger == null)
                 throw new StateException("Ingen ansøger koblet på ansøgning");
-            
-
+            foreach(var kriterie in Kriterier)
+            {
+                var nullCheck = Kriterier.Where(x => x.GetType() == kriterie.GetType()).FirstOrDefault();
+                if (nullCheck != null)
+                {
+                    if (nullCheck.GetType() == typeof(LokationKriterie))
+                        continue;
+                }
+                    else
+                        throw new StateException($"{kriterie.ToString()} optræder flere gange, opdater istedet kriteriet.");
+            }
         }
         public void SetId(string value)
         {
@@ -43,11 +52,8 @@ namespace BoligKø.Domain.Model
         }
         public void Addkriterie(Kriterie kriterie)
         {
-            var type = kriterie.GetType();
-            var nullCheck = Kriterier.Where(x => x.GetType() == kriterie.GetType()).FirstOrDefault();
-            if (nullCheck == null)
                 Kriterier.Add(kriterie);
-            else throw new StateException("1 kriterie kan kun  optræde 1 gang, opdater istedet");
+            ValidateState();
         }
         public void UpdateKriterie(Kriterie kriterie)
         {
