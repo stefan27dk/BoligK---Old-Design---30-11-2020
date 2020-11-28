@@ -2,7 +2,11 @@
 using BoligKø.Infrastructure.context;
 using BoligKø.Infrastructure.Patterns;
 using BoligKø.Infrastructure.Queries.interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace BoligKø.Infrastructure.Queries
@@ -22,6 +26,14 @@ namespace BoligKø.Infrastructure.Queries
         {
             var all = GetAll();
             return all.FirstOrDefault(a => a.UserId == id);
+        }
+
+        public Ansøger GetByUserIdIncluding(string id, [NotNull] Expression<Func<Ansøger, object>> navigationPropertyPath)
+        {
+            return context.Ansøgere
+                .Include(navigationPropertyPath)
+                .AsNoTracking()
+                .FirstOrDefault(a => a.Id == id);
         }
     }
 }

@@ -6,5 +6,9 @@ namespace BoligKø.Domain.Model
 {
     public abstract class Kriterie : BaseEntity
     {
+        public void SetId(string id)
+        {
+            Id = id;
+        }
     }
 }
