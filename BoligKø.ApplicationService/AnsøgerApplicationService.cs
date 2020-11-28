@@ -20,15 +20,16 @@ namespace BoligKø.ApplicationService
         }
         public async Task OpretAsync(AnsøgerDto ansøger)
         {
-            var recordToInsert = new Ansøger();
-            foreach(var a in ansøger.Ansøgninger)
-            {
-                var ansøgningToInsert = _mapper.Map<Ansøgning>(a);
-                ansøgningToInsert.SetAnsøger(recordToInsert);
-                ansøgningToInsert.ValidateState();
-                recordToInsert.AddAnsøgning(ansøgningToInsert);
-            }
+            var recordToInsert = _mapper.Map<Ansøger>(ansøger);
             recordToInsert.ValidateState();
+            if(recordToInsert.Ansøgninger != null)
+            {
+                foreach(var ansøgning in recordToInsert.Ansøgninger)
+                {
+                    ansøgning.SetAnsøger(recordToInsert);
+                    ansøgning.ValidateState();
+                }
+            }
             await _ansøgerCommand.CreateAsync(recordToInsert);
         }
         public async Task EditAsync(AnsøgerDto ansøger)

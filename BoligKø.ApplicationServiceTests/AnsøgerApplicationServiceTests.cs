@@ -94,7 +94,7 @@ namespace BoligKø.ApplicationService.Tests
             kriterier.Add(new LokationKriterieDto (7100));
             kriterier.Add(new LokationKriterieDto(8000));
 
-            ansøgninger.Add(new AnsøgningDto { Aktiv = true, Id = Guid.NewGuid().ToString(), ØvrigKommentar = "Bob", Kriterier = kriterier });
+            ansøgninger.Add(new AnsøgningDto { Ansøger = new AnsøgerDto(), Aktiv = true, Id = Guid.NewGuid().ToString(), ØvrigKommentar = "Bob", Kriterier = kriterier });
             var objToCreate = new AnsøgerDto
             {
                 Fornavn = "Nichlas",
@@ -116,9 +116,12 @@ namespace BoligKø.ApplicationService.Tests
             var service = new AnsøgerApplicationService(_mapper, mock.Object);
             Expression<Action<IAnsøgerCommand>> call = x => x.UpdateAsync(It.IsAny<Ansøger>());
             mock.Setup(call).Verifiable("Method not called");
-            var objToEdit = new AnsøgerDto();
-            objToEdit.
-
+            var id = Guid.NewGuid().ToString();
+            var objToEdit = new AnsøgerDto { Efternavn = "bob", Fornavn = "bob", Email = "bob@bob.dk" };
+            var expetectedObject = new AnsøgerDto { Efternavn = "bob123", Fornavn = "bob", Email = "bob@bob.dk" };
+            //Mock et return fra getbyid
+            service.EditAsync(objToEdit).GetAwaiter().GetResult();
+            Assert.AreEqual(objToEdit, expetectedObject);
         }
 
         [TestMethod()]

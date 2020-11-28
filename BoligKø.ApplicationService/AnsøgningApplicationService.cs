@@ -24,7 +24,7 @@ namespace BoligKø.ApplicationService
         public async Task OpretAsync(AnsøgningDto ansøgning)
         {
             var ansøgningToInsert = _mapper.Map<Ansøgning>(ansøgning);
-
+            ansøgningToInsert.SetId(ansøgning.Id);
             foreach (var kriterie in ansøgning.Kriterier)
             {
                 ansøgningToInsert.Addkriterie(_mapper.Map<Kriterie>(kriterie));
