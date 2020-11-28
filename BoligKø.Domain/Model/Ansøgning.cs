@@ -30,12 +30,22 @@ namespace BoligKø.Domain.Model
                     else
                         throw new StateException($"{kriterie.ToString()} optræder flere gange, opdater istedet kriteriet.");
             }
+            ValiderAttributes();
+        }
+
+        private void ValiderAttributes()
+        {
+            ValiderId();
+        }
+        private void ValiderId()
+        {
+            if (Id.Length != 36)
+                throw new InvalidIDException("ID længde skal være 36 tegn");
         }
         public void SetId(string value)
         {
-            if (value.Length != 36)
-                throw new InvalidIDException("Guid's længde skal være 36 tegn");
             Id = value;
+            ValiderId();
         }
         public void SetAnsøger(Ansøger ansøger)
         {
