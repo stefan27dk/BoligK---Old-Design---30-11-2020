@@ -99,6 +99,8 @@ namespace BoligKø.Domain.Model.Tests
             ansøger.SetEfternavn("bob");
             ansøger.SetFornavn("bob");
             ansøger.SetUserId(Guid.NewGuid().ToString());
+            ansøger.SetEmail("bob@bob.dk");
+            ansøger.SetId(Guid.NewGuid().ToString());
             var succes = false;
             try
             {
@@ -108,7 +110,7 @@ namespace BoligKø.Domain.Model.Tests
             catch (Exception)
             {
                 succes = false;
-                throw;
+                
             }
             Assert.IsTrue(succes);
         }

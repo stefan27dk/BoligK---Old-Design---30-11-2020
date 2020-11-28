@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BoligKø.ApplicationService.Dto
 {
-    class VærelsesKriterieDto : RangeKriterieDto
+    public class VærelsesKriterieDto : RangeKriterieDto
     {
         public VærelsesKriterieDto(double fra, double til) : base(fra, til)
         {

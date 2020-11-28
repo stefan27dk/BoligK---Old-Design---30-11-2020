@@ -17,52 +17,89 @@ namespace BoligKø.Domain.Model
             Ansøgninger = new List<Ansøgning>();
 
         }
-        public void ValidateState()
-        {
-            if (Email == string.Empty || Fornavn == string.Empty || Efternavn == string.Empty || UserId == string.Empty)
-                throw new StateException("Ansøger invalid state");
-        }
+
         public void SetId(string value)
         {
-            if (value.Length != 36)
-                throw new InvalidIDException("Guid's længde skal være 36 tegn");
             Id = value;
+            ValiderId();
         }
         public void SetEmail(string value)
         {
-            //ved godt det ikke er den bedste test af e-mail
-            if (!value.Contains("@") || !value.Contains("."))
-                throw new InvalidEmailException("E-mail skal indeholde @ og .");
+
             Email = value;
+            ValiderEmail();
 
         }
         public void SetFornavn(string value)
         {
-            if (value.Length == 0 || value == string.Empty)
-                throw new EmptyStringException("Kan ikke sætte tom streng");
             Fornavn = value;
-
+            ValidateFornavn();
         }
         public void SetEfternavn(string value)
         {
-            if (value.Length == 0 || value == string.Empty)
-                throw new EmptyStringException("Kan ikke sætte tom streng");
             Efternavn = value;
-
+            ValidateEfternavn();
         }
         public void SetUserId(string value)
         {
-            if (value.Length != 36)
-                throw new InvalidIDException("Guid's længde skal være 36 tegn");
             UserId = value;
+            ValiderUserId();
 
         }
         public void AddAnsøgning(Ansøgning a)
         {
-            //man må kun have 1 aktiv ansøgning
-            if (Ansøgninger.Any(x => x.Aktiv == true) && a.Aktiv == true)
-                throw new MaxAnsøgningsKapacitetException("Max 1 aktiv ansøgning");
             Ansøgninger.Add(a);
+            ValidateAnsøgninger();
+        }
+        public void ValidateState()
+        {
+            ValidateAttributes();
+            ValidateAnsøgninger();
+        }
+        private void ValidateAttributes()
+        {
+            ValiderId();
+            ValiderUserId();
+            ValiderEmail();
+            ValidateFornavn();
+            ValidateEfternavn();
+        }
+        private void ValiderId()
+        {
+            if (Id.Length != 36)
+                throw new InvalidIDException("Guid's længde skal være 36 tegn");
+
+        }
+        private void ValiderUserId()
+        {
+            if (UserId.Length != 36)
+                throw new InvalidIDException("Guid's længde skal være 36 tegn");
+
+        }
+        private void ValiderEmail()
+        {
+            if (!Email.Contains("@") || !Email.Contains("."))
+                throw new InvalidEmailException("E-mail skal indeholde @ og .");
+            if (Email == string.Empty || Email == "")
+                throw new InvalidEmailException("E-mail kan ikke være tom");
+
+        }
+        private void ValidateFornavn()
+        {
+            if (Fornavn.Length == 0 || Fornavn == string.Empty)
+                throw new EmptyStringException("Fornavn kan ikke være tom");
+        }
+        private void ValidateEfternavn()
+        {
+            if (Efternavn.Length == 0 || Efternavn == string.Empty)
+                throw new EmptyStringException("Efternavn kan ikke være tom");
+        }
+        private void ValidateAnsøgninger()
+        {
+            //man må kun have 1 aktiv ansøgning
+            var aktiveAnsøgninger = Ansøgninger.Where(x => x.Aktiv == true);
+            if (aktiveAnsøgninger.Count() > 1)
+                throw new MaxAnsøgningsKapacitetException("Max 1 aktiv ansøgning");
         }
 
     }

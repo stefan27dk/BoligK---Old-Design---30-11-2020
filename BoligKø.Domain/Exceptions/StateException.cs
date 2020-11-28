@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace BoligKø.Domain.Model
 {
     [Serializable]
-    internal class StateException : Exception
+    public class StateException : Exception
     {
         public StateException()
         {
