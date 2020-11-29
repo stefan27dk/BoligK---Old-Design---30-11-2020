@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BoligKø.ApplicationService;
 using BoligKø.ApplicationService.Mapper;
-using BoligKø.Domain.DomainService;
 using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.Commands;
 using BoligKø.Infrastructure.context;
@@ -45,10 +44,9 @@ namespace BoligKø.Api
 
             //Dependency Injection
             services.AddScoped<IAnsøgerQuery, AnsøgerQuery>();
-            services.AddScoped<ApplicationService.IAnsøgerCommand, AnsøgerCommand>();
+            services.AddScoped<IAnsøgerCommand, AnsøgerCommand>();
             services.AddScoped<IAnsøgningCommand, AnsøgningCommand>();
             services.AddScoped<IAnsøgningQuery, AnsøgningQuery>();
-            services.AddScoped<IAnsøgerAnsøgningDomainService, AnsøgerAnsøgningDomainService>();
             services.AddScoped<IAnsøgerApplicationService, AnsøgerApplicationService>();
             services.AddScoped<IAnsøgningApplicationService, AnsøgningApplicationService>();
 

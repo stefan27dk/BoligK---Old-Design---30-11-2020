@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BoligKø.ApplicationService.Dto;
-using BoligKø.Domain.DomainService;
 using BoligKø.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -13,13 +12,10 @@ namespace BoligKø.ApplicationService
     {
         private readonly IMapper _mapper;
         private readonly IAnsøgningCommand _ansøgningCommand;
-        private readonly IAnsøgerAnsøgningDomainService _ansøgerAnsøgningDomainService;
-
-        public AnsøgningApplicationService(IMapper mapper, IAnsøgningCommand ansøgningCommand, IAnsøgerAnsøgningDomainService ansøgerAnsøgningDomainService)
+        public AnsøgningApplicationService(IMapper mapper, IAnsøgningCommand ansøgningCommand)
         {
             this._mapper = mapper;
             this._ansøgningCommand = ansøgningCommand;
-            this._ansøgerAnsøgningDomainService = ansøgerAnsøgningDomainService;
         }
         public async Task OpretAsync(AnsøgningDto ansøgning)
         {
@@ -34,6 +30,7 @@ namespace BoligKø.ApplicationService
             storedAnsøgning.SetAktiv(ansøgning.Aktiv);
             storedAnsøgning.SetAnsøger(_mapper.Map<Ansøger>(ansøgning.Ansøger));
             storedAnsøgning.SetØvrigKommentar(ansøgning.ØvrigKommentar);
+            storedAnsøgning.SetKriterier(_mapper.Map<IEnumerable<Kriterie>>(ansøgning.Kriterier));
             storedAnsøgning.ValidateState();
             storedAnsøgning.Ansøger.ValidateState();
             await _ansøgningCommand.UpdateAsync(storedAnsøgning);

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace BoligKø.Domain.Model
 {
     [Serializable]
-    internal class MaxAnsøgningsKapacitetException : Exception
+    public class MaxAnsøgningsKapacitetException : Exception
     {
         public MaxAnsøgningsKapacitetException()
         {

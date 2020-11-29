@@ -11,7 +11,7 @@ namespace BoligKø.Domain.Model
         public string Fornavn { get; private set; }
         public string Efternavn { get; private set; }
         public string UserId { get; private set; }
-        public ICollection<Ansøgning> Ansøgninger { get; private set; }
+        public IEnumerable<Ansøgning> Ansøgninger { get; private set; }
         public Ansøger()
         {
             Ansøgninger = new List<Ansøgning>();
@@ -48,8 +48,16 @@ namespace BoligKø.Domain.Model
         }
         public void AddAnsøgning(Ansøgning a)
         {
-            Ansøgninger.Add(a);
+            var temp = Ansøgninger.ToList();
+            temp.Add(a);
+            Ansøgninger = temp;
             ValidateAnsøgninger();
+        }
+        public void SetAnsøgninger(IEnumerable<Ansøgning> ansøgninger)
+        {
+            Ansøgninger = ansøgninger;
+            ValidateAnsøgninger();
+
         }
         public void ValidateState()
         {

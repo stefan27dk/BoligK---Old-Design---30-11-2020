@@ -5,11 +5,11 @@ using System.Text;
 
 namespace BoligKø.Domain.Model
 {
-    public class Ansøgning:BaseEntity
+    public class Ansøgning : BaseEntity
     {
         public Ansøger Ansøger { get; private set; }
         public string ØvrigKommentar { get; private set; }
-        public ICollection<Kriterie> Kriterier { get; private set; }
+        public IEnumerable<Kriterie> Kriterier { get; private set; }
         public bool Aktiv { get; private set; }
         public Ansøgning()
         {
@@ -19,20 +19,33 @@ namespace BoligKø.Domain.Model
         {
             if (Ansøger == null)
                 throw new StateException("Ingen ansøger koblet på ansøgning");
-            foreach(var kriterie in Kriterier)
-            {
-                var nullCheck = Kriterier.Where(x => x.GetType() == kriterie.GetType()).FirstOrDefault();
-                if (nullCheck != null)
-                {
-                    if (nullCheck.GetType() == typeof(LokationKriterie))
-                        continue;
-                }
-                    else
-                        throw new StateException($"{kriterie.ToString()} optræder flere gange, opdater istedet kriteriet.");
-            }
+            ValiderKriterier();
             ValiderAttributes();
         }
+        private void ValiderKriterier()
+        {
+            var listOfKriterier = Kriterier.ToList();
+            for (var i = 0; i < listOfKriterier.Count; i++)
+            {
+                var kriterie = listOfKriterier[i];
+                listOfKriterier.Remove(kriterie);
+                var nullCheck = listOfKriterier.Where(x => x.GetType() == kriterie.GetType()).FirstOrDefault();
+                if (nullCheck != null)
+                {
+                    if (nullCheck.GetType() == typeof(LokationKriterie) || nullCheck.GetType() == typeof(LejemålsType))
+                    {
+                        continue;
 
+                    }
+                    else
+                    {
+                        throw new StateException($"{kriterie.ToString()} optræder flere gange, opdater istedet kriteriet.");
+                    }
+                }
+
+                i--;
+            }
+        }
         private void ValiderAttributes()
         {
             ValiderId();
@@ -41,6 +54,11 @@ namespace BoligKø.Domain.Model
         {
             if (Id.Length != 36)
                 throw new InvalidIDException("ID længde skal være 36 tegn");
+        }
+        public void SetKriterier(IEnumerable<Kriterie> kriterier)
+        {
+            Kriterier = kriterier;
+            ValiderKriterier();
         }
         public void SetId(string value)
         {
@@ -62,7 +80,9 @@ namespace BoligKø.Domain.Model
         }
         public void Addkriterie(Kriterie kriterie)
         {
-                Kriterier.Add(kriterie);
+            var kriterier = Kriterier.ToList();
+            kriterier.Add(kriterie);
+            Kriterier = kriterier;
             ValidateState();
         }
         public void UpdateKriterie(Kriterie kriterie)

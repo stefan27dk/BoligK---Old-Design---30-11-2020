@@ -32,8 +32,8 @@ namespace BoligKø.ApplicationService.Tests
             mock.Setup(call).Verifiable("Method not called");
             var ansøgninger = new List<AnsøgningDto>();
             var kriterier = new List<IKriterieDto>();
-            kriterier.Add(new KvmKriterieDto(50, 60));
             kriterier.Add(new LejemålsTypeKriterieDto(LejemålsType.Hus));
+            kriterier.Add(new KvmKriterieDto(50, 60));
             kriterier.Add(new PrisKriterieDto(1000, 5000));
             kriterier.Add(new TilladtDyrKriterieDto(true, false));
             kriterier.Add(new VærelsesKriterieDto(3, 4));
@@ -91,7 +91,7 @@ namespace BoligKø.ApplicationService.Tests
             mock.Setup(call).Verifiable("Method not called");
             var ansøgninger = new List<AnsøgningDto>();
             var kriterier = new List<IKriterieDto>();
-            kriterier.Add(new LokationKriterieDto (7100));
+            kriterier.Add(new LokationKriterieDto(7100));
             kriterier.Add(new LokationKriterieDto(8000));
 
             ansøgninger.Add(new AnsøgningDto { Ansøger = new AnsøgerDto(), Aktiv = true, Id = Guid.NewGuid().ToString(), ØvrigKommentar = "Bob", Kriterier = kriterier });
@@ -108,26 +108,6 @@ namespace BoligKø.ApplicationService.Tests
             service.OpretAsync(objToCreate).GetAwaiter().GetResult();
             mock.Verify(call);
 
-        }
-        [TestMethod()]
-        public void EditAsyncTest()
-        {
-            var mock = new Mock<IAnsøgerCommand>();
-            var service = new AnsøgerApplicationService(_mapper, mock.Object);
-            Expression<Action<IAnsøgerCommand>> call = x => x.UpdateAsync(It.IsAny<Ansøger>());
-            mock.Setup(call).Verifiable("Method not called");
-            var id = Guid.NewGuid().ToString();
-            var objToEdit = new AnsøgerDto { Efternavn = "bob", Fornavn = "bob", Email = "bob@bob.dk", Id = id, UserId = id };
-            var expetectedObject = new AnsøgerDto { Efternavn = "bob123", Fornavn = "bob", Email = "bob@bob.dk" };
-            //Mock et return fra getbyid
-            service.EditAsync(objToEdit).GetAwaiter().GetResult();
-            Assert.AreEqual(objToEdit, expetectedObject);
-        }
-
-        [TestMethod()]
-        public void SletAsyncTest()
-        {
-            Assert.Fail();
         }
     }
 }
