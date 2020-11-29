@@ -49,15 +49,15 @@ namespace BoligKø.Api
             services.AddScoped<IAnsøgningCommand, AnsøgningCommand>();
             services.AddScoped<IAnsøgningQuery, AnsøgningQuery>();
             services.AddScoped<IAnsøgerAnsøgningDomainService, AnsøgerAnsøgningDomainService>();
+            services.AddScoped<IAnsøgerApplicationService, AnsøgerApplicationService>();
+            services.AddScoped<IAnsøgningApplicationService, AnsøgningApplicationService>();
 
             //Automapper
             var mapperConfig = new MapperConfiguration(x => x.AddProfile(new AutomapperProfile()));
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            //Midlertidig
-            services.AddScoped<IAnsøgerApplicationService, AnsøgerApplicationService>();
-            services.AddScoped<IAnsøgningApplicationService, AnsøgningApplicationService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
