@@ -44,8 +44,7 @@ namespace BoligKø.ApplicationService
         }
         public async  Task SletAsync(string id)
         {
-            var ansøgerToDelete = new Ansøger();
-            ansøgerToDelete.SetUserId(id);
+            var ansøgerToDelete = await _ansøgerCommand.GetByIdAsync(id);
             await _ansøgerCommand.DeleteAsync(ansøgerToDelete);
         }
     }

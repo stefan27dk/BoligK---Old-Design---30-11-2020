@@ -24,29 +24,24 @@ namespace BoligKø.ApplicationService
         public async Task OpretAsync(AnsøgningDto ansøgning)
         {
             var ansøgningToInsert = _mapper.Map<Ansøgning>(ansøgning);
-            ansøgningToInsert.SetId(ansøgning.Id);
-            foreach (var kriterie in ansøgning.Kriterier)
-            {
-                ansøgningToInsert.Addkriterie(_mapper.Map<Kriterie>(kriterie));
-            }
             ansøgningToInsert.ValidateState();
             await _ansøgningCommand.CreateAsync(ansøgningToInsert);
         }
         public async Task EditAsync(AnsøgningDto ansøgning)
         {
+            //Todo: Venter på karl laver ny metode til at få include(ansøger).theninclude(ansøgers ansøgninger)
             var storedAnsøgning = await _ansøgningCommand.GetByIdIncludingAsync(ansøgning.Id, o => o.Ansøger);
             storedAnsøgning.SetAktiv(ansøgning.Aktiv);
             storedAnsøgning.SetAnsøger(_mapper.Map<Ansøger>(ansøgning.Ansøger));
             storedAnsøgning.SetØvrigKommentar(ansøgning.ØvrigKommentar);
-            await _ansøgerAnsøgningDomainService.UpdateAnsøgningAsync(storedAnsøgning.Ansøger, storedAnsøgning);
             storedAnsøgning.ValidateState();
+            storedAnsøgning.Ansøger.ValidateState();
             await _ansøgningCommand.UpdateAsync(storedAnsøgning);
 
         }
         public async Task SletAsync(string id)
         {
-            var ansøgningToDelete = new Ansøgning();
-            ansøgningToDelete.SetId(id);
+            var ansøgningToDelete = await _ansøgningCommand.GetByIdAsync(id);
             await _ansøgningCommand.DeleteAsync(ansøgningToDelete);
         }
     }
