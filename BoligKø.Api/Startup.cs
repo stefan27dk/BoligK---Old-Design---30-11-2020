@@ -47,6 +47,7 @@ namespace BoligKø.Api
             services.AddScoped<IAnsøgerQuery, AnsøgerQuery>();
             services.AddScoped<ApplicationService.IAnsøgerCommand, AnsøgerCommand>();
             services.AddScoped<IAnsøgningCommand, AnsøgningCommand>();
+            services.AddScoped<IAnsøgningQuery, AnsøgningQuery>();
             services.AddScoped<IAnsøgerAnsøgningDomainService, AnsøgerAnsøgningDomainService>();
 
             //Automapper
