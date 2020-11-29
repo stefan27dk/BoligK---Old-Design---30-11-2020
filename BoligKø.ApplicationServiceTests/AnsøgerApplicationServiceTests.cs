@@ -117,7 +117,7 @@ namespace BoligKø.ApplicationService.Tests
             Expression<Action<IAnsøgerCommand>> call = x => x.UpdateAsync(It.IsAny<Ansøger>());
             mock.Setup(call).Verifiable("Method not called");
             var id = Guid.NewGuid().ToString();
-            var objToEdit = new AnsøgerDto { Efternavn = "bob", Fornavn = "bob", Email = "bob@bob.dk" };
+            var objToEdit = new AnsøgerDto { Efternavn = "bob", Fornavn = "bob", Email = "bob@bob.dk", Id = id, UserId = id };
             var expetectedObject = new AnsøgerDto { Efternavn = "bob123", Fornavn = "bob", Email = "bob@bob.dk" };
             //Mock et return fra getbyid
             service.EditAsync(objToEdit).GetAwaiter().GetResult();

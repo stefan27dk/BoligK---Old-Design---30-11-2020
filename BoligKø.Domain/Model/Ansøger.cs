@@ -66,6 +66,8 @@ namespace BoligKø.Domain.Model
         }
         private void ValiderId()
         {
+            if (Id == null)
+                throw new ArgumentNullException("Ansøger Id er null");
             if (Id.Length != 36)
                 throw new InvalidIDException("Guid's længde skal være 36 tegn");
 

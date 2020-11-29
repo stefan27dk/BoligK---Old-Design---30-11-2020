@@ -35,6 +35,7 @@ namespace BoligKø.ApplicationService
         public async Task EditAsync(AnsøgerDto ansøger)
         {
             var storedAnsøger = await _ansøgerCommand.GetByIdAsync(ansøger.Id);
+            storedAnsøger.SetUserId(ansøger.Id);
             storedAnsøger.SetFornavn(ansøger.Fornavn);
             storedAnsøger.SetEfternavn(ansøger.Efternavn);
             storedAnsøger.SetEmail(ansøger.Email);
