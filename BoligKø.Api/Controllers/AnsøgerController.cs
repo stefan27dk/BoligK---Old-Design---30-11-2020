@@ -13,6 +13,8 @@ using BoligKø.Infrastructure.patterns;
 using Microsoft.EntityFrameworkCore;
 using BoligKø.Infrastructure.context;
 using AutoMapper;
+using BoligKø.Infrastructure.Queries;
+using System.IO;
 
 namespace BoligKø.Api.Controllers
 {
@@ -24,22 +26,25 @@ namespace BoligKø.Api.Controllers
         private readonly IAnsøgerApplicationService _ansøgerService;
         private readonly IAnsøgerQuery _ansøgerQuery;
         private readonly IMapper _mapper;
+        private readonly IAnsøgningQuery _ansøgningQuery;
         
         public AnsøgerController(
             IAnsøgerApplicationService service,
             IAnsøgerQuery query,
-            IMapper mapper)
+            IMapper mapper,
+            IAnsøgningQuery ansøgningQuery)
         {
             _ansøgerService = service;
             _ansøgerQuery = query;
             _mapper = mapper;
+            _ansøgningQuery = ansøgningQuery;
         }
 
         [Route("{id}")]
         [HttpGet]
         public async Task<JsonResult> Get(string id)
         {
-            AnsøgerDto dto = _mapper.Map<AnsøgerDto>(_ansøgerQuery.GetById(id));
+            AnsøgerDto dto = _mapper.Map<AnsøgerDto>(((AnsøgerQuery)_ansøgerQuery).GetByIdIncluding(id, a => a.Ansøgninger));
 
             if (dto == null) return Json("Ansøger Not found");
 
@@ -59,14 +64,51 @@ namespace BoligKø.Api.Controllers
             return Json(dto);
         }
 
+        [HttpPost]
+        public async Task<JsonResult> Create()
+        {
+            var request = HttpContext.Request;
+            try
+            {
+                using (var reader = new StreamReader(request.Body))
+                {
+                    string content = await reader.ReadToEndAsync();
+
+                    AnsøgerDto dto = System.Text.Json.JsonSerializer.Deserialize<AnsøgerDto>(content);
+
+                    await _ansøgerService.OpretAsync(dto);
+
+                    HttpContext.Response.StatusCode = 202;
+                    return Json(dto);
+                }
+            }
+            catch (Exception ex)
+            {
+                //TODO: remove this when proper erro stuff
+                return Json(ex.Message);
+            }
+
+        }
+
         public async Task<JsonResult> Index()
         {
             List<AnsøgerDto> dtos = new List<AnsøgerDto>();
 
-            foreach(Ansøger a in _ansøgerQuery.GetAll())
+            foreach(Ansøger a in ((AnsøgerQuery)_ansøgerQuery).GetAll())
             {
-                dtos.Add(_mapper.Map<AnsøgerDto>(a));
-            
+                AnsøgerDto dto = _mapper.Map<AnsøgerDto>(a);
+
+                if (dto.Ansøgninger == null) dto.Ansøgninger = new List<AnsøgningDto>();
+
+                List<Ansøgning> ansøgnings = ((AnsøgningQuery)_ansøgningQuery).GetByAnsøgerId(a.Id);
+                foreach(Ansøgning aa in ansøgnings)
+                {
+                    AnsøgningDto aDto = _mapper.Map<AnsøgningDto>(aa);
+                    dto.Ansøgninger.Add(aDto);
+                }
+
+                dtos.Add(dto);
+                
             }
 
             return Json(dtos);
