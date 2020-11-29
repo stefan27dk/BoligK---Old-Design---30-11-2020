@@ -13,9 +13,9 @@ namespace BoligKø.ApplicationService
         public Task<ICollection<Ansøgning>> GetAllIncludingAsync([NotNullAttribute] Expression<Func<Ansøgning, object>> navigationPropertyPath);
         public Task<Ansøgning> GetByIdAsync(string id);
         public Task<Ansøgning> GetByIdIncludingAsync(string id, [NotNullAttribute] Expression<Func<Ansøgning, object>> navigationPropertyPath);
-        public Task CreateAsync(Ansøgning ansøger);
-        public Task UpdateAsync(Ansøgning ansøger);
-        public Task DeleteAsync(Ansøgning ansøger);
+        public Task CreateAsync(Ansøgning ansøgning);
+        public Task UpdateAsync(Ansøgning ansøgning);
+        public Task DeleteAsync(Ansøgning ansøgning);
 
 
     }

@@ -12,10 +12,15 @@ namespace BoligKø.Infrastructure.patterns
 {
     public class Repository<T> where T : BaseEntity
     {
-        private readonly BoligKøContext context;
+        protected readonly BoligKøContext context;
         public Repository(BoligKøContext context)
         {
             this.context = context;
+        }
+
+        protected virtual void HandleEntityBeforeDataChangeOperation(T entity)
+        {
+
         }
 
         public async Task<ICollection<T>> GetAllAsync()
@@ -25,7 +30,7 @@ namespace BoligKø.Infrastructure.patterns
 
         public async Task<ICollection<T>> GetAllIncludingAsync([NotNullAttribute] Expression<Func<T, object>> navigationPropertyPath)
         {
-             return await context.Set<T>().Include(navigationPropertyPath).ToListAsync();
+            return await context.Set<T>().Include(navigationPropertyPath).ToListAsync();
         }
 
         /// <summary>
@@ -48,12 +53,14 @@ namespace BoligKø.Infrastructure.patterns
 
         public async Task CreateAsync(T entity)
         {
+            HandleEntityBeforeDataChangeOperation(entity);
             context.Add(entity);
             await context.SaveChangesAsync();
         }
 
-        public virtual async Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
+            HandleEntityBeforeDataChangeOperation(entity);
             var toUpdate = await context.Set<T>().FirstOrDefaultAsync(t => t.Id == entity.Id);
             toUpdate = entity;
             await context.SaveChangesAsync();
@@ -61,6 +68,7 @@ namespace BoligKø.Infrastructure.patterns
 
         public async Task DeleteAsync(T entity)
         {
+            HandleEntityBeforeDataChangeOperation(entity);
             context.Remove(entity);
             await context.SaveChangesAsync();
         }

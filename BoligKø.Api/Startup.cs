@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BoligKø.ApplicationService;
 using BoligKø.ApplicationService.Mapper;
-using BoligKø.Domain.DomainService;
 using BoligKø.Domain.Model;
 using BoligKø.Infrastructure.Commands;
 using BoligKø.Infrastructure.context;
@@ -45,18 +44,18 @@ namespace BoligKø.Api
 
             //Dependency Injection
             services.AddScoped<IAnsøgerQuery, AnsøgerQuery>();
-            services.AddScoped<ApplicationService.IAnsøgerCommand, AnsøgerCommand>();
+            services.AddScoped<IAnsøgerCommand, AnsøgerCommand>();
             services.AddScoped<IAnsøgningCommand, AnsøgningCommand>();
-            services.AddScoped<IAnsøgerAnsøgningDomainService, AnsøgerAnsøgningDomainService>();
+            services.AddScoped<IAnsøgningQuery, AnsøgningQuery>();
+            services.AddScoped<IAnsøgerApplicationService, AnsøgerApplicationService>();
+            services.AddScoped<IAnsøgningApplicationService, AnsøgningApplicationService>();
 
             //Automapper
             var mapperConfig = new MapperConfiguration(x => x.AddProfile(new AutomapperProfile()));
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            //Midlertidig
-            services.AddScoped<IAnsøgerApplicationService, AnsøgerApplicationService>();
-            services.AddScoped<IAnsøgningApplicationService, AnsøgningApplicationService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

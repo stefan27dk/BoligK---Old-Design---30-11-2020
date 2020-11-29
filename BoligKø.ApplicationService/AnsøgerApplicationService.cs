@@ -20,23 +20,22 @@ namespace BoligKø.ApplicationService
         }
         public async Task OpretAsync(AnsøgerDto ansøger)
         {
-            var recordToInsert = new Ansøger();
-            foreach(var a in ansøger.Ansøgninger)
-            {
-                var ansøgningToInsert = _mapper.Map<Ansøgning>(a);
-
-                foreach(var kriterie in a.Kriterier)
-                {
-                    ansøgningToInsert.Addkriterie(_mapper.Map<Kriterie>(kriterie));
-                }
-                recordToInsert.AddAnsøgning(ansøgningToInsert);
-            }
+            var recordToInsert = _mapper.Map<Ansøger>(ansøger);
             recordToInsert.ValidateState();
+            if(recordToInsert.Ansøgninger != null)
+            {
+                foreach(var ansøgning in recordToInsert.Ansøgninger)
+                {
+                    ansøgning.SetAnsøger(recordToInsert);
+                    ansøgning.ValidateState();
+                }
+            }
             await _ansøgerCommand.CreateAsync(recordToInsert);
         }
         public async Task EditAsync(AnsøgerDto ansøger)
         {
             var storedAnsøger = await _ansøgerCommand.GetByIdAsync(ansøger.Id);
+            storedAnsøger.SetUserId(ansøger.Id);
             storedAnsøger.SetFornavn(ansøger.Fornavn);
             storedAnsøger.SetEfternavn(ansøger.Efternavn);
             storedAnsøger.SetEmail(ansøger.Email);
@@ -45,8 +44,7 @@ namespace BoligKø.ApplicationService
         }
         public async  Task SletAsync(string id)
         {
-            var ansøgerToDelete = new Ansøger();
-            ansøgerToDelete.SetUserId(id);
+            var ansøgerToDelete = await _ansøgerCommand.GetByIdAsync(id);
             await _ansøgerCommand.DeleteAsync(ansøgerToDelete);
         }
     }
