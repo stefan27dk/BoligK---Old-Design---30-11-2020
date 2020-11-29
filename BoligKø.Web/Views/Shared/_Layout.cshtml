@@ -27,7 +27,18 @@
 
 <body>
     
-        <nav id="nav">   
+    <nav role="custom-dropdown" id="nav">
+
+
+        <input type="checkbox" id="mobileMenu">
+
+        <div role="role=custom-dropdown" class="mobileTopMenu">
+            <label for="mobileMenu" id="labelCheckBox"><img id="checkBoxImg" src="~/img/TopMenu/Action-Menu-icon.png" /></label>
+
+        </div>
+
+
+
             <ul>
                 <li><a> <img src="~/img/TopMenu/Empty-icon.png" /> Lejebolig Ansøgnings Portal</a></li>
                 <li><a asp-controller="Home" asp-action="Index"><img src="~/img/TopMenu/Actions-home-icon.png" /> Home</a></li>
@@ -48,7 +59,7 @@
                     </ul>
                 </li>
 
-                
+
 
                 <!-------Second--------->
                 <li>
@@ -74,7 +85,7 @@
 
 
             </ul>
-        </nav>
+</nav>
     
 
 

@@ -265,7 +265,6 @@ textArea:hover{
 
 
 
-
  
 
 
@@ -277,18 +276,16 @@ textArea:hover{
 
 
 
+    /*<----------------Lines-------------------------->*/
+    .hrSub {
+        border-top: 2px solid rgb(81, 81, 81);
+    }
 
-/*<----------------Lines-------------------------->*/
-     .hrSub{
-         border-top: 2px solid rgb(81, 81, 81);
-     }
 
-
-     .hrTitle {
-         width: 100%;
-         border-bottom: 2px solid rgb(255, 226, 0);
-     }
-     
+    .hrTitle {
+        width: 100%;
+        border-bottom: 2px solid rgb(255, 226, 0);
+    }
 
 
 
@@ -296,16 +293,17 @@ textArea:hover{
 
 
 
-/*<----------------Select-Menu-------------------------->*/
-     .selectmenu {
-         display: block;
-         margin: auto;
-         height: 40px;
-         border-radius: 5px;
-         background-color: rgb(147, 213, 124);
-         color: rgb(9, 0, 101);
-         font-weight: bold;
-     }
+
+    /*<----------------Select-Menu-------------------------->*/
+    .selectmenu {
+        display: block;
+        margin: auto;
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(147, 213, 124);
+        color: rgb(9, 0, 101);
+        font-weight: bold;
+    }
 
         .selectmenu option {
             background-color: rgb(147, 213, 124);
@@ -329,7 +327,7 @@ textArea:hover{
             box-shadow: 0 0 0 2pt rgb(144, 255, 122);
         }
 
-   
+
 
 
 
@@ -346,7 +344,7 @@ textArea:hover{
 
 
 
-   /*<----------------Button-------------------------->*/
+    /*<----------------Button-------------------------->*/
     .buttonStyle1 {
         border-radius: 4px;
         /*border: 2px solid rgb(107,107,107);*/
@@ -360,15 +358,14 @@ textArea:hover{
         font-family: Andale Mono, monospace;
         font-size: 20px;
     }
-    
 
 
 
-    .buttonStyle1:hover {
-       
-        background: linear-gradient(to bottom, rgb(80,86,105) 50%, #6a809c36 80%);
-        color: rgb(155,255,131);
-    }
+
+        .buttonStyle1:hover {
+            background: linear-gradient(to bottom, rgb(80,86,105) 50%, #6a809c36 80%);
+            color: rgb(155,255,131);
+        }
 
 
 
@@ -384,11 +381,10 @@ textArea:hover{
             background-color: deepskyblue;
             color: yellow;
             outline: none;
-            box-shadow:none;
+            box-shadow: none;
         }
 
 
- 
 
 
 
@@ -397,60 +393,57 @@ textArea:hover{
 
 
 
-/*<===========================::::HOME-PAGE-STYLE:::==============================>*/
-                                             
+
+    /*<===========================::::HOME-PAGE-STYLE:::==============================>*/
+
     /* -------------------TOP--BAR--DIV/Nav--------------------*/
-.topBar {
-    position: fixed;
-    z-index: 1; 
-    width: 100%;
-    height: 72px;
-    top: 0;
-    left: 0;
-    background-color: red;   
-}
-    
-    
-    
-    
-    
-    
+    .topBar {
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        height: 72px;
+        top: 0;
+        left: 0;
+        background-color: red;
+    }
+
+
+
+
+
+
     /* -------------------TOP--BAR--Item--------------------*/
     .topBarItem {
         display: flex;
         flex-direction: row;
     }
-    
-    
-    
-    
- 
 
 
 
 
-/*<----------------Footer-------------------------->*/
-.footerBack {
-    background-color: rgb(60, 57, 64);
-    border-top: 2px solid rgb(79, 255, 170);
-    
-}
 
 
-    .footerBack a {
-        color: rgb(14, 255, 196);
-        font-weight: 900;
-        font-family: Andale Mono, monospace;
-        border-bottom: 2px solid rgb(79, 255, 110);
+
+
+
+    /*<----------------Footer-------------------------->*/
+    .footerBack {
+        background-color: rgb(60, 57, 64);
+        border-top: 2px solid rgb(79, 255, 170);
     }
 
 
+        .footerBack a {
+            color: rgb(14, 255, 196);
+            font-weight: 900;
+            font-family: Andale Mono, monospace;
+            border-bottom: 2px solid rgb(79, 255, 110);
+        }
 
 
 
 
 
-       
 
 
 
@@ -462,20 +455,23 @@ textArea:hover{
 
 
 
-/*=========== #nav = ID ===============::Menu::================================================================*/
 
 
-     /*-------::Menu - Container::--------*/
-     nav {
-         font-family: Andale Mono, monospace;
-         width: 100%;
-         height: 57px;
-         top: 0;
-         left: 0;
-         background-color: none;
-         position: fixed;
-         z-index: 99999;  
-     }
+
+    /*=========== #nav = ID ===============::Menu::================================================================*/
+
+
+    /*-------::Menu - Container::--------*/
+    nav {
+        font-family: Andale Mono, monospace;
+        width: 100%;
+        height: 57px;
+        top: 0;
+        left: 0;
+        background-color: none;
+        position: fixed;
+        z-index: 2;
+    }
 
 
 
@@ -486,12 +482,12 @@ textArea:hover{
         font-family: Andale Mono, monospace;
         position: relative;
     }
-   
- 
-       
 
-     
-      
+
+
+
+
+
 
     /*-------::Holder - of - Lists/Rows::--------*/
 #nav ul {
@@ -504,21 +500,21 @@ textArea:hover{
     height: 100%;
     border-bottom: solid 1px rgb(75, 77, 82);
 }
-   
-   
+
+
 
     /*-------::Lists/Rows::--------*/
-    #nav li {
-        color: rgb(255, 178, 77);
-        background: rgb(44, 58, 57);
-        background: linear-gradient(180deg, rgba(80,80,97,1) 2%, rgba(20,44,57,1) 7%, rgba(70,70,85,1) 11%, rgba(28,31,32,1) 90%);
-        display: inline;
-        float: left;
-        padding: 0.8rem;
-        position: relative;
-        text-decoration: none;
-        transition-duration: 0.01s;
-    }
+#nav li {
+    color: rgb(255, 178, 77);
+    background: rgb(44, 58, 57);
+    background: linear-gradient(180deg, rgba(80,80,97,1) 2%, rgba(20,44,57,1) 7%, rgba(70,70,85,1) 11%, rgba(28,31,32,1) 90%);
+    display: inline;
+    float: left;
+    padding: 0.8rem;
+    position: relative;
+    text-decoration: none;
+    z-index: auto;
+}
 
 
 
@@ -528,14 +524,14 @@ textArea:hover{
         }
 
 
-   
-       /*-------::Lists/Rows - Link <a> ::--------*/
+
+        /*-------::Lists/Rows - Link <a> ::--------*/
         #nav li a {
             color: rgb(255, 178, 77);
         }
 
 
-            /*-------###########::Pseudo Selectors::##########--------*/     
+            /*-------###########::Pseudo Selectors::##########--------*/
             #nav li a:after {
                 content: '';
                 position: absolute;
@@ -553,8 +549,8 @@ textArea:hover{
 
 
 
-            /*------<li> last Child-------*/  
-            /*#nav li li:last-child {
+        /*------<li> last Child-------*/
+        /*#nav li li:last-child {
                 border-bottom-left-radius: 5px;
                 border-bottom-right-radius: 5px;
             }*/
@@ -563,31 +559,32 @@ textArea:hover{
 
 
 
-          
 
 
-    /*-------::Lists/Rows - HOVER::--------*/
-        #nav li:hover,
-        li:focus-within {
-            background: rgb(80,80,97);
-            background: linear-gradient(180deg, rgba(80,80,97,1) 2%, rgba(20,44,57,1) 7%, rgba(53,58,74,1) 11%, rgba(28,31,32,1) 73%, rgba(12,63,93,1) 87%, rgba(0,168,255,1) 100%);
-            cursor: pointer;
-           border-bottom-left-radius: 4px;
-           border-bottom-right-radius: 4px;
-        }
-   
-   
-   
-   
-   
-           /*-------::"Focus-within a" is focus when tabbing -- <a> - properties::--------*/
+
+        /*-------::Lists/Rows - HOVER::--------*/
+    #nav li:hover,
+    li:focus-within {
+        background: rgb(80,80,97);
+        background: linear-gradient(180deg, rgba(80,80,97,1) 2%, rgba(20,44,57,1) 7%, rgba(53,58,74,1) 11%, rgba(28,31,32,1) 73%, rgba(12,63,93,1) 87%, rgba(0,168,255,1) 100%);
+        cursor: pointer;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+     
+    }
+
+
+
+
+
+        /*-------::"Focus-within a" is focus when tabbing -- <a> - properties::--------*/
         #nav li:focus-within a {
             outline: none;
         }
-   
-   
-   
-      /*-------::Sub - UL::--------*/
+
+
+
+    /*-------::Sub - UL::--------*/
 #nav ul li ul {
     background-color: none;
     visibility: hidden;
@@ -600,10 +597,10 @@ textArea:hover{
     width: auto;
     display: none;
 }
-   
-   
-   
-       /*-------::DropDown::--------*/
+
+
+
+    /*-------::DropDown::--------*/
 #nav ul li:hover > ul, /*-------::DropDown::--------*/
 ul li:focus-within > ul,
 ul li ul:hover,
@@ -612,22 +609,26 @@ ul li ul:focus {
     opacity: 1;
     display: block;
     background: none;
-    border: none;  
+    border: none;
 }
-         
-         
-       /*-------::The List/Rows of the Sub - || UL ||::--------*/
+
+
+
+
+    /*-------::The List/Rows of the Sub - || UL ||::--------*/
 #nav ul li ul li {
     background: rgb(53,58,74);
     background: linear-gradient(180deg, rgba(83,88,104,1) 10%, rgba(58,61,62,1) 82%, rgba(49,60,67,1) 98%, rgb(51, 49, 49) 99%);
     clear: both;
     border-radius: 4px;
     width: auto;
+    opacity: 0.99;
+    position: relative;
+    z-index: 7111111;
 }
 
+ 
 
-
-  
 
     #nav li li a {
         text-overflow: ellipsis;
@@ -635,13 +636,148 @@ ul li ul:focus {
         white-space: nowrap;
     }
 
- 
 
 
-#nav li img {
-    width: auto;
-    height: 30px;
-    filter: drop-shadow(0px 0px 5px #000000);
+
+    #nav li img {
+        width: auto;
+        height: 30px;
+        filter: drop-shadow(0px 0px 5px #000000);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*================ ::Mobile- Device - Menu::======================================*/
+
+    /*--------::The - Top - Bar::---"<div>"------------*/
+nav[role=custom-dropdown] .mobileTopMenu {
+    background: rgb(44, 58, 57);
+    background: linear-gradient(180deg, rgba(80,80,97,1) 2%, rgba(20,44,57,1) 7%, rgba(70,70,85,1) 11%, rgba(28,31,32,1) 90%);
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: solid 1px rgb(75, 77, 82);
+    display: none;
+    
 }
 
- 
+
+
+
+
+/*--------::The - Checkbox - Show / Hide - Menu------------*/   
+nav[role=custom-dropdown] input[type=checkbox] {
+    display: none;
+}
+
+
+
+/*--------::: Checkbox - Image ::--------*/
+nav[role=custom-dropdown] #checkBoxImg {
+    display: none;
+    height:40px;
+    float: right;
+}
+
+
+
+
+/*--------::: Checkbox - Image - Label ::--------*/
+nav[role=custom-dropdown] #labelCheckBox {
+   float: right;
+   padding: 10px;
+}
+
+
+
+
+
+
+/*===================:::If the screen is resized / "small" or is Mobilephone:::============================================*/
+@media screen and (max-width: 55em) {
+    html,
+    body {
+        margin-top: 50px;
+    }
+
+
+
+    /*--------::: Ul ::--------*/   
+    nav[role=custom-dropdown] ul {
+        display: none;
+        height: 100%;
+    }
+
+
+
+
+
+    /*--------::: Checkbox - Image ::--------*/
+    nav[role=custom-dropdown] #checkBoxImg {
+        display: block;
+    }
+
+
+
+    /*--------::: Show - Checkbox::--------*/   
+    /*nav[role=custom-dropdown] input[type=checkbox] {
+        position: absolute;
+         z-index:9999;
+         display:block;
+    }*/
+
+
+
+
+    /*---------------::: Show - Mobile - TopBar::------------------------*/     
+    nav[role=custom-dropdown] .mobileTopMenu {
+        background: rgb(44, 58, 57);
+        background: linear-gradient(180deg, rgba(80,80,97,1) 2%, rgba(20,44,57,1) 7%, rgba(70,70,85,1) 11%, rgba(28,31,32,1) 90%);
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        width: 100%;
+        height: 100%;
+        border-bottom: solid 1px rgb(75, 77, 82);
+        display: block;
+    }
+
+
+     
+
+
+    /*--------::: Show - Ul - On - CheckBox - Click::--------*/   
+    nav[role= custom-dropdown ] input[type=checkbox]:checked ~ ul {
+        display: block;
+    }
+
+
+    /*--------::: Show - Ul - UL- On - CheckBox - Click -- For the log In::--------*/
+    nav[role= custom-dropdown ] input[type=checkbox]:checked ~ ul ul {
+        display: block;  
+    }
+
+
+        /*--------::: The <li> Inside the Ul::--------*/
+        nav[role= custom-dropdown ] input[type=checkbox]:checked ~ ul > li {
+            width: 100%;
+            /*opacity: 0.9;*/
+            text-align: left; 
+        }
+      
+}
