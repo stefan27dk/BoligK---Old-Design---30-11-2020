@@ -26,8 +26,61 @@
 
 
 <body>
-   
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient menuBar">
+    
+        <nav id="nav">   
+            <ul>
+                <li><a> <img src="~/img/TopMenu/Empty-icon.png" /> Lejebolig Ansøgnings Portal</a></li>
+                <li><a asp-controller="Home" asp-action="Index"><img src="~/img/TopMenu/Actions-home-icon.png" /> Home</a></li>
+                @*<li role="presentation"><a asp-controller="Home" asp-action="Privacy"><i class="far fa-building colorGold"></i>Portfølje</a></li>*@
+                <li><a asp-action="Ansøg" asp-controller="Ansøger"><img src="~/img/TopMenu/Document-Add-icon.png" /> Ansøg</a></li>
+                <li><a asp-action="Oplysninger" asp-controller="Ansøger"> <img src="~/img/TopMenu/building-icon.png" /> Boliger </a></li>
+
+
+
+                <!-------Mig--------->
+                <li>
+                    <a href="#"><img src="~/img/TopMenu/system-users-icon.png" /> Mig</a>
+                    <ul>
+                        <li><a asp-action="Oplysninger" asp-controller="Ansøger"><img src="~/img/TopMenu/contacts-icon.png" /> Oplysninger</a></li>
+
+                        <li><a href="#">Sub-2</a></li>
+                        <li><a href="#">Sub-3</a></li>
+                    </ul>
+                </li>
+
+                
+
+                <!-------Second--------->
+                <li>
+                    <img src="~/img/TopMenu/Empty-icon.png" /> <a href="#">Two</a>
+                    <ul>
+                        <li><a href="#">Sub-1</a></li>
+                        <li><a href="#">Sub-2</a></li>
+                        <li><a href="#">Sub-3</a></li>
+                    </ul>
+                </li>
+
+
+                <li><img src="~/img/TopMenu/Empty-icon.png" /><a href="#"> Three</a></li>
+                <li><img src="~/img/TopMenu/Empty-icon.png" /><a href="#"> Three</a></li>
+                <li><img src="~/img/TopMenu/Empty-icon.png" /><a href="#"> Three</a></li>
+                <li><img src="~/img/TopMenu/Empty-icon.png" /><a href="#"> Three</a></li>
+                <li><img src="~/img/TopMenu/Empty-icon.png" /><a href="#"> Three</a></li>
+
+
+
+                <!-------Log In--------->
+                <partial style="color: red;" name="_LoginPartial" />
+
+
+            </ul>
+        </nav>
+    
+
+
+
+
+    @*<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient menuBar">
         <div class="container">
             <a class="navbar-brand logo" style="font-size:20px;" href="#">Lejebolig Ansøgnings Portal</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,13 +93,14 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>*@
+
+
 
 
 
     <main class="page landing-page">
-        @RenderBody()
-
+        @RenderBody()  
     </main>
 
 
